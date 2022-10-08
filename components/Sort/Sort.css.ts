@@ -7,3 +7,7 @@ export const yearBtnContainer = style({
 export const alphaBtnContainer = style({
     background: 'salmon',
 });
+
+export const randomFilmContainer = style({
+    background: 'purple',
+})
