@@ -12,6 +12,7 @@ const Search: FC = () => {
       <input type="text" onChange={(e) => setUserInputText(e.target.value)} />
       <Sort type="year" />
       <Sort type="alpha" />
+      <Sort type="random" />
     </div>
   );
 };
