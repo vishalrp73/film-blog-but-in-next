@@ -1,6 +1,5 @@
 import { useEffect, Dispatch, SetStateAction } from 'react';
 import Fuse from 'fuse.js';
-import db_films from '../lib/films.json';
 import { useFilmContext } from '../context/films';
 import { Film } from '../lib/types';
 
