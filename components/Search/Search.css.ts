@@ -9,9 +9,3 @@ export const container = style({
     alignItems: 'center',
     justifyContent: 'center',
 });
-
-export const miniContainer = style({
-    width: '40%',
-    height: 30,
-    backgroundColor: 'silver',
-})
