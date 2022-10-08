@@ -1,5 +1,6 @@
 import { GetStaticPropsContext } from 'next';
 import { Film } from '../../lib/types';
+import Search from '../../components/Search';
 import FilmDetails from '../../components/FilmDetails';
 
 interface PageProps {
@@ -7,7 +8,12 @@ interface PageProps {
 }
 
 function FilmPage({ film }: PageProps) {
-  return <FilmDetails film={film} />;
+  return (
+    <>
+      <Search />
+      <FilmDetails film={film} />
+    </>
+  );
 }
 
 export default FilmPage;
