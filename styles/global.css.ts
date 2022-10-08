@@ -1,6 +1,6 @@
 import { globalStyle } from "@vanilla-extract/css";
 
-globalStyle('html, body', {
+globalStyle('*', {
   boxSizing: 'border-box',
   margin: 0,
 });
