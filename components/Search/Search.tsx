@@ -9,7 +9,11 @@ const Search: FC = () => {
 
   return (
     <div className={styles.container}>
-      <input type="text" onChange={(e) => setUserInputText(e.target.value)} />
+      <input
+        className={styles.searchInput}
+        type="text"
+        onChange={(e) => setUserInputText(e.target.value)}
+      />
       <Sort type="year" />
       <Sort type="alpha" />
       <Sort type="random" />

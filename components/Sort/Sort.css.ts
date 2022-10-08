@@ -1,5 +1,11 @@
 import { style } from "@vanilla-extract/css";
 
+export const btnContainer = style({
+    width: 120,
+    height: 35,
+    borderRadius: 4,
+})
+
 export const yearBtnContainer = style({
     background: 'orange',
 });

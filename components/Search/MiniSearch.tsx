@@ -15,24 +15,30 @@ const MiniSearch: FC<SearchProps> = ({ toggle, setToggle }) => {
 
   return toggle ? (
     <div className={styles.miniContainer}>
-      <input type="text" onChange={(e) => setUserInputText(e.target.value)} />
-      <Sort type="year" />
-      <Sort type="alpha" />
-      <div
-        className={styles.closeBtn}
-        onClick={() => setToggle((prevState) => !prevState)}
-      >
-        X
+      <div className={styles.miniInputContainer}>
+        <input
+          className={styles.searchInput}
+          type="text"
+          onChange={(e) => setUserInputText(e.target.value)}
+        />
+        <Sort type="year" />
+        <Sort type="alpha" />
+        <button
+          className={styles.closeBtn}
+          onClick={() => setToggle((prevState) => !prevState)}
+        >
+          X
+        </button>
       </div>
       {userInputText !== '' && <Dropdown />}
     </div>
   ) : (
-    <div
+    <button
       className={styles.closedContainer}
       onClick={() => setToggle((prevState) => !prevState)}
     >
-      <p>Open</p>
-    </div>
+      Open
+    </button>
   );
 };
 

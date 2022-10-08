@@ -10,6 +10,7 @@ export const headerContainer = style({
 
 export const backBtn = style({
     textDecoration: 'none',
+    marginLeft: 16,
 });
 
 export const title = style({
