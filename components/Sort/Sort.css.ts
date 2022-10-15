@@ -15,6 +15,11 @@ export const sortBtn = style({
         border: '3px double rgb(255, 0, 162)',
         color: 'rgb(222, 222, 222)',
         backgroundColor: 'rgb(80, 80, 80)',
+    },
+    '@media': {
+        'screen and (max-width: 375px)': {
+            marginTop: 12,
+        }
     }
 })
 

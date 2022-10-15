@@ -19,7 +19,10 @@ export const sortBtnGroup = style({
     '@media': {
         'screen and (max-width: 768px)': {
             marginTop: 20,
-        }
+        },
+        'screen and (max-width: 375px)': {
+            flexDirection: 'column',
+        },
     }
 })
 

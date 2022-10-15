@@ -17,6 +17,12 @@ export const goldenSeal = style({
     top: 0,
     left: 0,
     zIndex: 1,
+    '@media': {
+        'screen and (max-width: 640px)': {
+            width: 100,
+            height: 100,
+        },
+    }
 })
 
 export const title = style({
@@ -27,6 +33,17 @@ export const title = style({
     backdropFilter: 'blur(16px) saturate(180%)',
     WebkitBackdropFilter: 'blur (16px) saturate(180%)',
     backgroundColor: 'rgba(0, 0, 0, 0.4)',
+    '@media': {
+        'screen and (max-width: 768px)': {
+            fontSize: 48
+        },
+        'screen and (max-width: 640px)': {
+            fontSize: 32,
+        },
+        'screen and (max-width: 480px)': {
+            fontSize: 24,
+        }
+    }
 })
 
 export const description = style({
