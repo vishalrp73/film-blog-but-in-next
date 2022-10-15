@@ -1,3 +1,4 @@
 import FilmDetails from "./FilmDetails";
+import FilmDetailsHeader from "./FilmDetailsHeader";
 
-export default FilmDetails;
+export { FilmDetails, FilmDetailsHeader }

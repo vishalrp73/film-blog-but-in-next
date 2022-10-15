@@ -1,7 +1,7 @@
 import { FC, useState } from 'react';
 import { Film } from '../../lib/types';
 import { MiniSearch } from '../Search';
-import Header from './Header';
+import FilmDetailsHeader from './FilmDetailsHeader';
 import * as styles from './FilmDetails.css';
 
 interface FilmProps {
@@ -14,7 +14,7 @@ const FilmDetails: FC<FilmProps> = ({ film }) => {
   return (
     <div className={styles.container}>
       <MiniSearch toggle={toggleSearch} setToggle={setToggleSearch} />
-      <Header title={film.title} />
+      <FilmDetailsHeader title={film.title} />
     </div>
   );
 };

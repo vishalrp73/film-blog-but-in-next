@@ -1,11 +1,11 @@
 import type { NextPage } from 'next';
-import { Search } from '../components/Search';
+import Header from '../components/Header';
 import FilmGrid from '../components/FilmGrid';
 
 const Home: NextPage = () => {
   return (
     <>
-      <Search />
+      <Header />
       <FilmGrid />
     </>
   );

@@ -1,17 +1,8 @@
 import { useEffect, Dispatch, SetStateAction } from 'react';
 import Fuse from 'fuse.js';
+import { randomiseFilms } from '../handlers/sort';
 import { useFilmContext } from '../context/films';
 import { Film } from '../lib/types';
-
-const randomiseFilms = (films: Film[]) => {
-  for (let i = films.length - 1; i > 0; i--) {
-    const j = Math.floor(Math.random() * (i + 1));
-    const temp = films[i];
-    films[i] = films[j];
-    films[j] = temp;
-  }
-  return films;
-};
 
 export const useSearch = (
   searchTerm: string,

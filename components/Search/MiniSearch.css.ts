@@ -1,6 +1,7 @@
 import { style } from "@vanilla-extract/css"
 
 export const miniContainer = style({
+    position: 'sticky',
     width: '40%',
     height: 30,
     backgroundColor: 'silver',

@@ -64,7 +64,7 @@ const Sort: FC<SortProps> = ({ type }) => {
   return (
     <input
       type="button"
-      className={clsx({
+      className={clsx(styles.sortBtn, {
         [styles.yearBtnContainer]: type === 'year',
         [styles.alphaBtnContainer]: type === 'alpha',
         [styles.randomFilmContainer]: type === 'random',

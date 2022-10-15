@@ -4,4 +4,5 @@ export const container = style({
     width: '100%',
     display: 'flex',
     flexDirection: 'column',
+    backgroundColor: 'lightblue',
 })
