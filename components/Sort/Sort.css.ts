@@ -21,7 +21,7 @@ export const sortBtn = style({
             marginTop: 12,
         }
     }
-})
+});
 
 export const yearBtnContainer = style({});
 

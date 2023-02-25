@@ -1,32 +1,25 @@
-import { FC, useState, useEffect } from 'react';
-import { useSearch } from '../../hooks/useSearch';
-import Sort from '../Sort';
+import type { FC } from 'react';
+import { useState } from 'react';
+import { useSearch } from '../../lib/hooks/useSearch';
 import { getRandomFilm } from '../../handlers/sort';
 import * as styles from './Search.css';
 
 const Search: FC = () => {
-  const [userInputText, setUserInputText] = useState<string>('');
-  const [inputPlaceholder, setInputPlaceholder] = useState<string>('');
-  useSearch(userInputText);
-
-  useEffect(() => {
-    getRandomFilm().then((res) => setInputPlaceholder(res.title));
-  }, []);
+  const [userSearchText, setUserSearchText] = useState<string>('');
+  const randomFilm = getRandomFilm();
+  useSearch(userSearchText);
 
   return (
-    <div className={styles.container}>
-      <input
-        type="text"
-        placeholder={`Search for a title!   e.g ... "${inputPlaceholder}"`}
-        className={styles.searchInput}
-        onChange={(e) => setUserInputText(e.target.value)}
-      />
-      <div className={styles.sortBtnGroup}>
-        <Sort type="year" />
-        <Sort type="alpha" />
-        <Sort type="random" />
-      </div>
-    </div>
+    <input
+      className={styles.searchInput}
+      placeholder={
+        randomFilm
+          ? `Search for a title!   e.g ... "${randomFilm.title}"`
+          : 'Search for a title!'
+      }
+      type="text"
+      onChange={(e) => setUserSearchText(e.target.value)}
+    />
   );
 };
 

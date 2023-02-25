@@ -2,38 +2,64 @@ import {
   createContext,
   useContext,
   useState,
+  useEffect,
   Dispatch,
   SetStateAction,
   ReactNode,
-  useEffect,
+  FC,
 } from 'react';
 import { Film } from '../lib/types';
+import { randomiseFilms } from '../handlers/sort';
+import { fetchHttpBasic } from '../handlers/request';
 
-type ContextFilms = [Film[], Dispatch<SetStateAction<Film[]>>];
+type ContextFilms = {
+  films: Film[];
+  setFilms: Dispatch<SetStateAction<Film[] | undefined>>;
+  searchedFilms: Film[];
+  setSearchedFilms: Dispatch<SetStateAction<Film[] | undefined>>;
+};
 
 interface Props {
   children: ReactNode;
 }
 
-const FilmContext = createContext<ContextFilms>([[], () => null]);
+const FilmContext = createContext<ContextFilms>({
+  films: [],
+  setFilms: () => null,
+  searchedFilms: [],
+  setSearchedFilms: () => null,
+});
 
-export const FilmProvider = ({ children }: Props) => {
-  const [films, setFilms] = useState<Film[]>();
+export const FilmProvider: FC<Props> = ({ children }) => {
+  const [films, setFilms] = useState<Film[] | undefined>();
+  const [searchedFilms, setSearchedFilms] = useState<Film[] | undefined>();
 
   useEffect(() => {
-    fetch('http://localhost:4000/films')
-      .then((res) => res.json())
-      .then((data) => setFilms(data))
-      .catch((err) => console.log('fuck', err));
+    fetchHttpBasic('films')
+      .then((data) => {
+        const randomisedData = randomiseFilms(data);
+        setFilms([...randomisedData]);
+        setSearchedFilms([...randomisedData]);
+      })
+      .catch((err) => console.error('fuck', err));
   }, []);
 
-  return (
-    films && (
-      <FilmContext.Provider value={[films, setFilms]}>
+  if (films && searchedFilms) {
+    return (
+      <FilmContext.Provider
+        value={{
+          films: films,
+          setFilms: setFilms,
+          searchedFilms: searchedFilms,
+          setSearchedFilms: setSearchedFilms,
+        }}
+      >
         {children}
       </FilmContext.Provider>
-    )
-  );
+    );
+  }
+
+  return null;
 };
 
 export const useFilmContext = () => {

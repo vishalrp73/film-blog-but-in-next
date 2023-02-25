@@ -5,6 +5,7 @@ export const container = style({
     display: 'flex',
     alignItems: 'center',
     justifyContent: 'space-between',
+    margin: '0 auto',
     '@media': {
         'screen and (max-width: 768px)': {
             flexDirection: 'column',
@@ -30,6 +31,7 @@ export const sortBtnGroup = style({
 export const searchInput = style({
     width: '70%',
     height: 50,
+    padding: 20,
     backgroundColor: '#0C0C0C',
     border: '2px ridge rgb(255, 0, 162)',
     borderRadius: 5,

@@ -1,4 +1,3 @@
-import Search from "./Search";
-import MiniSearch from "./MiniSearch";
+import SearchContainer from "./SearchContainer";
 
-export { Search, MiniSearch };
+export default SearchContainer;

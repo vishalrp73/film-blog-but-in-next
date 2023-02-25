@@ -1,11 +1,9 @@
-import { FC, useState, useEffect } from 'react';
-import { Film } from '../../lib/types';
-import { randomiseFilms } from '../../handlers/sort';
+import type { FC } from 'react';
 import { useFilmContext } from '../../context/films';
 import { getTopFive } from '../../handlers/sort';
-import Panel from './Panel';
-import * as styles from './FilmGrid.css';
 
+// to do
+// move this to be returned from API (endpoint developed)
 const TOP_5_DEAD_OR_ALIVE_YOU_AINT_GOTTA_REMIND_ME = [
   'Apocalypse Now',
   'Uncut Gems',
@@ -15,41 +13,44 @@ const TOP_5_DEAD_OR_ALIVE_YOU_AINT_GOTTA_REMIND_ME = [
 ];
 
 const FilmGrid: FC = () => {
-  const [films] = useFilmContext();
-  const [topFive, setTopFive] = useState<Film[]>();
+  const { films, searchedFilms } = useFilmContext();
+  const topFive = getTopFive(TOP_5_DEAD_OR_ALIVE_YOU_AINT_GOTTA_REMIND_ME);
 
-  useEffect(() => {
-    getTopFive(TOP_5_DEAD_OR_ALIVE_YOU_AINT_GOTTA_REMIND_ME)
-      .then((res) => setTopFive(randomiseFilms(res)))
-      .catch((err) => console.log('oh no', err));
-  }, []);
+  if (searchedFilms.length && searchedFilms.length < films.length) {
+    return (
+      <>
+        {searchedFilms.map((film) => (
+          <div key={film?.film_id}>
+            <p>{film?.title}</p>
+          </div>
+        ))}
+      </>
+    );
+  }
 
-  return (
-    <div className={styles.container}>
-      <h1>Top Five</h1>
-      <div className={styles.gridContainer}>
+  if (films.length > 0 && topFive !== null) {
+    return (
+      <>
+        <h1>Top Five</h1>
         {topFive &&
           topFive.map((film) => (
-            <Panel
-              id={film.film_id}
-              title={film.title}
-              thumbnail={film.thumbnail}
-            />
+            <div key={film?.film_id}>
+              <p>{film?.title}</p>
+            </div>
           ))}
-      </div>
-      <h1>------------------------</h1>
-      <div className={styles.gridContainer}>
+        <br />
+        <h1>List</h1>
         {films &&
           films.map((film) => (
-            <Panel
-              id={film.film_id}
-              title={film.title}
-              thumbnail={film.thumbnail}
-            />
+            <div key={film?.film_id}>
+              <p>{film?.title}</p>
+            </div>
           ))}
-      </div>
-    </div>
-  );
+      </>
+    );
+  }
+
+  return null;
 };
 
 export default FilmGrid;
