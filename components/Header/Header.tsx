@@ -4,7 +4,7 @@ import { getRandomNumber } from '../../handlers/sort';
 import julia from '../../lib/img/julia-fox.jpg';
 import seal from '../../lib/img/golden-seal.png';
 import * as styles from './Header.css';
-import Search from '../Search';
+import { Search } from '../Search';
 import Sort from '../Sort/Sort';
 
 const Header: FC = () => {

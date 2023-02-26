@@ -1,14 +1,14 @@
 import type { FC } from 'react';
-import { useState } from 'react';
+import { useFilmContext } from '../../context/films';
 import { useSearch } from '../../lib/hooks/useSearch';
 import { getRandomFilm } from '../../handlers/sort';
 import * as styles from './Search.css';
 import Sort from '../Sort/Sort';
 
 const Search: FC = () => {
-  const [userSearchText, setUserSearchText] = useState<string>('');
+  const { searchTerm, setSearchTerm } = useFilmContext();
   const randomFilm = getRandomFilm();
-  useSearch(userSearchText);
+  useSearch(searchTerm);
 
   return (
     <div className={styles.container}>
@@ -20,9 +20,9 @@ const Search: FC = () => {
             : 'Search for a title!'
         }
         type="text"
-        onChange={(e) => setUserSearchText(e.target.value)}
+        onChange={(e) => setSearchTerm(e.target.value)}
       />
-      {userSearchText !== '' && (
+      {searchTerm !== '' && (
         <div className={styles.sortBtnGroup}>
           <Sort type="year" />
           <Sort type="alpha" />

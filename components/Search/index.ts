@@ -1,3 +1,5 @@
 import Search from "./Search";
+import MiniSearch from "./MiniSearch";
+import Dropdown from "./Dropdown";
 
-export default Search;
+export { Search, MiniSearch, Dropdown };

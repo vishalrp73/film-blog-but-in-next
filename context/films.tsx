@@ -15,6 +15,8 @@ import { fetchHttpBasic } from '../handlers/request';
 type ContextFilms = {
   films: Film[];
   setFilms: Dispatch<SetStateAction<Film[] | undefined>>;
+  searchTerm: string;
+  setSearchTerm: Dispatch<SetStateAction<string>>;
   searchedFilms: Film[];
   setSearchedFilms: Dispatch<SetStateAction<Film[] | undefined>>;
   genreSearchedFilms: FilmsByGenre | null;
@@ -28,6 +30,8 @@ interface Props {
 const FilmContext = createContext<ContextFilms>({
   films: [],
   setFilms: () => null,
+  searchTerm: '',
+  setSearchTerm: () => null,
   searchedFilms: [],
   setSearchedFilms: () => null,
   genreSearchedFilms: [],
@@ -57,6 +61,8 @@ export const FilmProvider: FC<Props> = ({ children }) => {
         value={{
           films: films,
           setFilms: setFilms,
+          searchTerm: searchTerm,
+          setSearchTerm: setSearchTerm,
           searchedFilms: searchedFilms,
           setSearchedFilms: setSearchedFilms,
           genreSearchedFilms: genreSearchedFilms,

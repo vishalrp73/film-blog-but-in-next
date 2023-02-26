@@ -1,6 +1,8 @@
-import type { FC } from 'react';
+import type { FC, ReactNode } from 'react';
 import { useFilmContext } from '../../context/films';
 import { getTopFive } from '../../handlers/sort';
+import FilmPanel from './FilmPanel';
+import * as styles from './FilmGrid.css';
 
 // to do
 // move this to be returned from API (endpoint developed)
@@ -12,58 +14,82 @@ const TOP_5_DEAD_OR_ALIVE_YOU_AINT_GOTTA_REMIND_ME = [
   'Fear and Loathing in Las Vegas',
 ];
 
+interface Props {
+  children: ReactNode;
+}
+
+const FilmGridContainer: FC<Props> = ({ children }) => {
+  return <div className={styles.container}>{children}</div>;
+};
+
 const FilmGrid: FC = () => {
   const { films, searchedFilms, genreSearchedFilms } = useFilmContext();
   const topFive = getTopFive(TOP_5_DEAD_OR_ALIVE_YOU_AINT_GOTTA_REMIND_ME);
 
   if (genreSearchedFilms !== null) {
     return (
-      <>
+      <FilmGridContainer>
         {genreSearchedFilms.map((genre) => (
           <div key={genre.genre}>
             <h3>{genre.genre}</h3>
-            {genre.films.map((film) => (
-              <div key={film.film_id}>
-                <p>{film.title}</p>
-              </div>
-            ))}
+            <div className={styles.gridContainer}>
+              {genre.films.map((film) => (
+                <FilmPanel
+                  id={film.film_id}
+                  title={film.title}
+                  thumbnail={film.thumbnail}
+                />
+              ))}
+            </div>
           </div>
         ))}
-      </>
+      </FilmGridContainer>
     );
   }
 
   if (searchedFilms.length && searchedFilms.length < films.length) {
     return (
-      <>
-        {searchedFilms.map((film) => (
-          <div key={film?.film_id}>
-            <p>{film?.title}</p>
-          </div>
-        ))}
-      </>
+      <FilmGridContainer>
+        <div className={styles.gridContainer}>
+          {searchedFilms.map((film) => (
+            <FilmPanel
+              id={film.film_id}
+              title={film.title}
+              thumbnail={film.thumbnail}
+            />
+          ))}
+        </div>
+      </FilmGridContainer>
     );
   }
 
   if (films.length > 0 && topFive !== null) {
     return (
-      <>
+      <FilmGridContainer>
         <h1>Top Five</h1>
-        {topFive &&
-          topFive.map((film) => (
-            <div key={film?.film_id}>
-              <p>{film?.title}</p>
-            </div>
-          ))}
+        <div className={styles.gridContainer}>
+          {topFive &&
+            topFive.map((film) => (
+              <FilmPanel
+                id={film.film_id}
+                title={film.title}
+                thumbnail={film.thumbnail}
+              />
+            ))}
+        </div>
         <br />
         <h1>List</h1>
-        {films &&
-          films.map((film) => (
-            <div key={film?.film_id}>
-              <p>{film?.title}</p>
-            </div>
-          ))}
-      </>
+        <div className={styles.gridContainer}>
+          {films &&
+            films.map((film) => (
+              <FilmPanel
+                id={film.film_id}
+                title={film.title}
+                thumbnail={film.thumbnail}
+              />
+            ))}
+        </div>
+      </FilmGridContainer>
     );
   }
 
