@@ -1,3 +1,3 @@
-export type ButtonType = 'year' | 'alpha' | 'random';
+export type ButtonType = 'year' | 'alpha' | 'genre' | 'random';
 
 export type ButtonOrder = 'asc' | 'desc' | null;

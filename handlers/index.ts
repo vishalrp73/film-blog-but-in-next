@@ -1,1 +1,9 @@
-export { randomiseFilms, getRandomFilm, getButtonValue, sortByYear, sortByAlpha, sortByGenre } from "./sort";
+export {
+    randomiseFilms,
+    getRandomFilm,
+    getButtonValue,
+    sortByYear,
+    sortByAlpha,
+    sortByGenre,
+    sortByGenreAlpha
+} from "./sort";

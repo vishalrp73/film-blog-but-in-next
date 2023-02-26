@@ -1,7 +1,7 @@
 import { style } from '@vanilla-extract/css';
 
 export const container = style({
-    width: '75%',
+    width: '70%',
     display: 'flex',
     alignItems: 'center',
     justifyContent: 'space-between',
@@ -29,7 +29,7 @@ export const sortBtnGroup = style({
 
 
 export const searchInput = style({
-    width: '70%',
+    width: '100%',
     height: 50,
     padding: 20,
     backgroundColor: '#0C0C0C',

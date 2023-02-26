@@ -30,3 +30,5 @@ export interface Film {
     headline: string;
     comments: Comment[];
 }
+
+export type FilmsByGenre = {genre: string, films: Film[]}[];

@@ -27,4 +27,6 @@ export const yearBtnContainer = style({});
 
 export const alphaBtnContainer = style({});
 
+export const genreBtnContainer = style({});
+
 export const randomFilmContainer = style({});

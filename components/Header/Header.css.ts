@@ -2,6 +2,7 @@ import { style } from "@vanilla-extract/css";
 
 export const container = style({
     width: '100%',
+    maxHeight: 460,
     display: 'flex',
     padding: '100px 0',
     flexDirection: 'column',

@@ -1,7 +1,6 @@
-import type { Film } from "../lib/types";
+import type { Film, FilmsByGenre } from "../lib/types";
 import { ButtonType, ButtonOrder } from "./types";
 import { useFilmContext } from "../context/films";
-import { fetchHttpBasic } from "./request";
 
 export const randomiseFilms = (films: Film[]) => {
     for (let i = films.length - 1; i > 0; i--) {
@@ -28,6 +27,9 @@ export const getButtonValue = (type: ButtonType, order?: ButtonOrder ) => {
     const base = type === 'random' ? "I'M FEELING LUCKY" : type;
     if (order === 'asc') return `${base} ⇡`;
     if (order === 'desc') return `${base} ⇣`;
+    if (type === 'genre' && order === null) {
+        return `${base} ○`
+    }
     return base;
 }
 
@@ -36,6 +38,17 @@ export const sortByYear = (order: ButtonOrder, films: Film[]): Film[] => {
     if (order === 'asc') return sort.reverse();
     if (order === 'desc') return sort;
     return films;
+}
+
+export const sortByGenreAlpha = (order: ButtonOrder, genreSorted: FilmsByGenre) => {
+    const sort = genreSorted.sort((a, b) => {
+        const genreA = a.genre;
+        const genreB = b.genre;
+        return ((genreA < genreB) ? -1 : (genreA > genreB) ? 1 : 0)
+    });
+    if (order === 'asc') return sort;
+    if (order === 'desc') return sort.reverse();
+    return null;
 }
 
 export const sortByAlpha = (order: ButtonOrder, films: Film[]): Film[] => {
@@ -57,17 +70,6 @@ export const getTopFive = (topFive: string[]) => {
     return collection;
 }
 
-export const getAllFilmsByGenre = (fetchedGenre: string, filmsSearched: Film[]) => {
-    const filmGenreArray: Film[] = [];
-    filmsSearched.forEach(film => film.genre.find(genre => {
-        if (genre === fetchedGenre) {
-            filmGenreArray.push(film)
-        }
-    }))
-    console.log(filmGenreArray)
-    return filmGenreArray;
-}
-
 export const sortByGenre = () => {
     const { searchedFilms } = useFilmContext();
     const genreCollection: string[] = [];
@@ -79,6 +81,11 @@ export const sortByGenre = () => {
         })
     });
 
-    console.log(genreCollection)
-
+    const filmsByGenre: FilmsByGenre = [];
+    genreCollection.map(collectedGenre => {
+        const moviesByGenre = searchedFilms.filter(searchedFilm => searchedFilm.genre.includes(collectedGenre));
+        filmsByGenre.push({ genre: collectedGenre, films: moviesByGenre});  
+    });
+    
+    return filmsByGenre;
 }

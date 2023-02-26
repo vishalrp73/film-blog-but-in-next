@@ -18,6 +18,7 @@ const Sort: FC<Props> = ({ type }) => {
       className={clsx(styles.sortBtn, {
         [styles.yearBtnContainer]: type === 'year',
         [styles.alphaBtnContainer]: type === 'alpha',
+        [styles.genreBtnContainer]: type === 'genre',
         [styles.randomFilmContainer]: type === 'random',
       })}
       value={getButtonValue(type, getOrder(type))}

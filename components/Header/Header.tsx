@@ -1,10 +1,11 @@
 import type { FC } from 'react';
 import { StaticImageData } from 'next/image';
-import SearchContainer from '../components/Search';
-import { getRandomNumber } from '../handlers/sort';
-import julia from '../lib/img/julia-fox.jpg';
-import seal from '../lib/img/golden-seal.png';
+import { getRandomNumber } from '../../handlers/sort';
+import julia from '../../lib/img/julia-fox.jpg';
+import seal from '../../lib/img/golden-seal.png';
 import * as styles from './Header.css';
+import Search from '../Search';
+import Sort from '../Sort/Sort';
 
 const Header: FC = () => {
   const backgroundImages: StaticImageData[] = [julia];
@@ -26,12 +27,14 @@ const Header: FC = () => {
       <div className={styles.description}>
         <p>Howdy friends!</p>
         <br />
-        <p>Welcome to my film blog - created using Next.js</p>
+        <p>Welcome to my film blog</p>
         <br />
         <p>NOW WITH HAND CRAFTED GRAPHICS!</p>
         <br />
       </div>
-      <SearchContainer />
+      <Search />
+      <Sort type="random" />
+      <Sort type="genre" />
     </div>
   );
 };

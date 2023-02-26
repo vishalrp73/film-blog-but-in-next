@@ -13,8 +13,25 @@ const TOP_5_DEAD_OR_ALIVE_YOU_AINT_GOTTA_REMIND_ME = [
 ];
 
 const FilmGrid: FC = () => {
-  const { films, searchedFilms } = useFilmContext();
+  const { films, searchedFilms, genreSearchedFilms } = useFilmContext();
   const topFive = getTopFive(TOP_5_DEAD_OR_ALIVE_YOU_AINT_GOTTA_REMIND_ME);
+
+  if (genreSearchedFilms !== null) {
+    return (
+      <>
+        {genreSearchedFilms.map((genre) => (
+          <div key={genre.genre}>
+            <h3>{genre.genre}</h3>
+            {genre.films.map((film) => (
+              <div key={film.film_id}>
+                <p>{film.title}</p>
+              </div>
+            ))}
+          </div>
+        ))}
+      </>
+    );
+  }
 
   if (searchedFilms.length && searchedFilms.length < films.length) {
     return (

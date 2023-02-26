@@ -8,7 +8,7 @@ import {
   ReactNode,
   FC,
 } from 'react';
-import { Film } from '../lib/types';
+import { Film, FilmsByGenre } from '../lib/types';
 import { randomiseFilms } from '../handlers/sort';
 import { fetchHttpBasic } from '../handlers/request';
 
@@ -17,6 +17,8 @@ type ContextFilms = {
   setFilms: Dispatch<SetStateAction<Film[] | undefined>>;
   searchedFilms: Film[];
   setSearchedFilms: Dispatch<SetStateAction<Film[] | undefined>>;
+  genreSearchedFilms: FilmsByGenre | null;
+  setGenreSearchedFilms: Dispatch<SetStateAction<FilmsByGenre | null>>;
 };
 
 interface Props {
@@ -28,11 +30,16 @@ const FilmContext = createContext<ContextFilms>({
   setFilms: () => null,
   searchedFilms: [],
   setSearchedFilms: () => null,
+  genreSearchedFilms: [],
+  setGenreSearchedFilms: () => null,
 });
 
 export const FilmProvider: FC<Props> = ({ children }) => {
   const [films, setFilms] = useState<Film[] | undefined>();
+  const [searchTerm, setSearchTerm] = useState<string>('');
   const [searchedFilms, setSearchedFilms] = useState<Film[] | undefined>();
+  const [genreSearchedFilms, setGenreSearchedFilms] =
+    useState<FilmsByGenre | null>(null);
 
   useEffect(() => {
     fetchHttpBasic('films')
@@ -52,6 +59,8 @@ export const FilmProvider: FC<Props> = ({ children }) => {
           setFilms: setFilms,
           searchedFilms: searchedFilms,
           setSearchedFilms: setSearchedFilms,
+          genreSearchedFilms: genreSearchedFilms,
+          setGenreSearchedFilms: setGenreSearchedFilms,
         }}
       >
         {children}
