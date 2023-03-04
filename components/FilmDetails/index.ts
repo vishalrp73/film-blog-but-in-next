@@ -1,3 +1,3 @@
-import FilmDetailsHeader from "./FilmDetailsHeader";
+import Header from "./Header";
 
-export { FilmDetailsHeader };
+export { Header };

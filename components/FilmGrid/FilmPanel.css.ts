@@ -10,3 +10,8 @@ export const panelContainer = style({
     border: '2px solid orangered',
     margin: 12,
 });
+
+export const emblaSlide = style({
+    flex: '0 0 100%',
+    minWidth: 0,
+});

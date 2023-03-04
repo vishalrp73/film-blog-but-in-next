@@ -18,8 +18,12 @@ const MiniSearch: FC<SearchProps> = ({ toggle, setToggle }) => {
     return (
       <div className={styles.miniContainer}>
         <input type="text" onChange={(e) => setSearchTerm(e.target.value)} />
-        <Sort type="year" />
-        <Sort type="alpha" />
+        {searchTerm !== '' && (
+          <>
+            <Sort type="year" />
+            <Sort type="alpha" />
+          </>
+        )}
         <button
           className={styles.closeBtn}
           onClick={() => setToggle((prevState) => !prevState)}

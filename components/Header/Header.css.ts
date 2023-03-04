@@ -1,8 +1,9 @@
 import { style } from "@vanilla-extract/css";
+import { translucent } from "../../styles/translucent.css";
 
 export const container = style({
     width: '100%',
-    maxHeight: 460,
+    maxHeight: 600,
     display: 'flex',
     padding: '100px 0',
     flexDirection: 'column',
@@ -11,7 +12,15 @@ export const container = style({
     backgroundSize: 'cover',
     color: 'white',
     borderBottom: '8px solid rgb(255, 0, 162)',
+    transition: 'max-height 0.1s',
+    transitionTimingFunction: 'ease-out',
 });
+
+export const smallContainer = style({
+    maxHeight: 200,
+    transition: 'max-height 0.4s',
+    transitionTimingFunction: 'ease-in',
+})
 
 export const goldenSeal = style({
     position: 'absolute',
@@ -31,9 +40,6 @@ export const title = style({
     fontSize: 72,
     textAlign: 'center',
     borderRadius: 12,
-    backdropFilter: 'blur(16px) saturate(180%)',
-    WebkitBackdropFilter: 'blur (16px) saturate(180%)',
-    backgroundColor: 'rgba(0, 0, 0, 0.4)',
     '@media': {
         'screen and (max-width: 768px)': {
             fontSize: 48
@@ -58,4 +64,8 @@ export const description = style({
     backdropFilter: 'blur(16px) saturate(180%)',
     WebkitBackdropFilter: 'blur (16px) saturate(180%)',
     backgroundColor: 'rgba(0, 0, 0, 0.4)',
+});
+
+export const btnGroup = style({
+    marginTop: 20,
 });

@@ -3,6 +3,7 @@ import { useFilmContext } from '../../context/films';
 import { getTopFive } from '../../handlers/sort';
 import FilmPanel from './FilmPanel';
 import * as styles from './FilmGrid.css';
+import { EmblaCarousel } from './Carousel';
 
 // to do
 // move this to be returned from API (endpoint developed)
@@ -33,13 +34,7 @@ const FilmGrid: FC = () => {
           <div key={genre.genre}>
             <h3>{genre.genre}</h3>
             <div className={styles.gridContainer}>
-              {genre.films.map((film) => (
-                <FilmPanel
-                  id={film.film_id}
-                  title={film.title}
-                  thumbnail={film.thumbnail}
-                />
-              ))}
+              {genre.films && <EmblaCarousel films={genre.films} />}
             </div>
           </div>
         ))}
@@ -51,13 +46,14 @@ const FilmGrid: FC = () => {
     return (
       <FilmGridContainer>
         <div className={styles.gridContainer}>
-          {searchedFilms.map((film) => (
-            <FilmPanel
-              id={film.film_id}
-              title={film.title}
-              thumbnail={film.thumbnail}
-            />
-          ))}
+          {searchedFilms &&
+            searchedFilms.map((searchedFilm) => (
+              <FilmPanel
+                id={searchedFilm.film_id}
+                title={searchedFilm.title}
+                thumbnail={searchedFilm.thumbnail}
+              />
+            ))}
         </div>
       </FilmGridContainer>
     );
@@ -68,14 +64,7 @@ const FilmGrid: FC = () => {
       <FilmGridContainer>
         <h1>Top Five</h1>
         <div className={styles.gridContainer}>
-          {topFive &&
-            topFive.map((film) => (
-              <FilmPanel
-                id={film.film_id}
-                title={film.title}
-                thumbnail={film.thumbnail}
-              />
-            ))}
+          <EmblaCarousel films={topFive} />
         </div>
         <br />
         <h1>List</h1>
