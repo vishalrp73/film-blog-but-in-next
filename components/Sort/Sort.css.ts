@@ -11,6 +11,9 @@ export const sortBtn = style({
     padding: '0 20px',
     margin: '0 8px',
     cursor: 'pointer',
+    'WebkitBoxShadow': '5px 5px 15px 5px rgba(0, 0, 0, 0.45)',
+    'boxShadow': '5px 5px 15px 5px rgba(0, 0, 0, 0.45)',
+
     ':hover': {
         border: '3px double rgb(255, 0, 162)',
         color: 'rgb(222, 222, 222)',
@@ -28,5 +31,7 @@ export const yearBtnContainer = style({});
 export const alphaBtnContainer = style({});
 
 export const genreBtnContainer = style({});
+
+export const reviewedBtnContainer = style({});
 
 export const randomFilmContainer = style({});

@@ -1,22 +1,22 @@
 import type { FC } from 'react';
 import { GetStaticPropsContext } from 'next';
 import { Film } from '../../lib/types';
-import Artists from '../../components/Artists/Artists';
+import ArtistPage from '../../screens/ArtistPage';
 
 interface Props {
   artist: string;
   films: Film[];
 }
 
-const ArtistPage: FC<Props> = ({ artist, films }) => {
+const Artist: FC<Props> = ({ artist, films }) => {
   if (artist && films) {
-    return <Artists artist={artist} films={films} />;
+    return <ArtistPage artist={artist} films={films} />;
   }
 
   return null;
 };
 
-export default ArtistPage;
+export default Artist;
 
 export async function getStaticPaths() {
   const artistList: string[] = await fetch(

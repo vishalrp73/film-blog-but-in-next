@@ -1,8 +1,8 @@
 import clsx from 'clsx';
-import { useRouter } from 'next/router';
 import type { FC, ReactNode } from 'react';
 import { Film } from '../../lib/types';
-import ArtistLink from '../Artists/ArtistLink';
+import { ContentLink } from '../ContentLink';
+import { getRandomNumber } from '../../handlers/sort';
 import * as styles from './PreviewView.css';
 import { translucent } from '../../styles/translucent.css';
 
@@ -23,8 +23,8 @@ interface Props {
 }
 
 const PreviewView: FC<Props> = ({ film }) => {
-  const actors = film.notable_actors.join(', ');
-  const router = useRouter();
+  const runTimeSplit = film.runtime.split(':');
+  const runtime = `${runTimeSplit[0]} hr ${runTimeSplit[1]} mins`;
 
   return (
     <div className={styles.container}>
@@ -48,45 +48,42 @@ const PreviewView: FC<Props> = ({ film }) => {
             <OuterPanel>
               <p className={styles.heading}>Genres</p>
               {film.genre.map((genre) => (
-                <span>{genre}</span>
+                <ContentLink route="genres" content={genre} />
               ))}
             </OuterPanel>
             {/* 2 */}
             <InnerPanel>
-              <a
-                onClick={() =>
-                  router.push(`/artist/${encodeURIComponent(film.director)}`)
-                }
-              >
-                <p>Directed by {film.director}</p>
-              </a>
+              <p>
+                Directed by&nbsp;
+                <ContentLink route="artist" content={film.director} />
+              </p>
             </InnerPanel>
             {/* 3 */}
             <OuterPanel>
               <div className={styles.runtimeYear}>
-                <span>runtime: {film.runtime}</span>
-                <span>released in{film.year}</span>
+                <span>runtime: {runtime}</span>
+                <span>released in: {film.year}</span>
               </div>
             </OuterPanel>
             {/* 4 */}
             <OuterPanel>
               <p className={styles.heading}>Soundtrack</p>
               {film.soundtrack.map((artist) => (
-                <ArtistLink artist={artist} />
+                <ContentLink route="artist" content={artist} />
               ))}
             </OuterPanel>
             {/* 5 */}
             <InnerPanel>
               <p className={styles.heading}>Notable actors</p>
               {film.notable_actors.map((actor) => (
-                <ArtistLink artist={actor} />
+                <ContentLink route="artist" content={actor} />
               ))}
             </InnerPanel>
             {/* 6 */}
             <OuterPanel>
               <p className={styles.heading}>Writers</p>
               {film.writers.map((writer) => (
-                <span>{writer}</span>
+                <ContentLink route="artist" content={writer} />
               ))}
             </OuterPanel>
           </>

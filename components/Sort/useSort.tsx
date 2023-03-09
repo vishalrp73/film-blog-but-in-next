@@ -6,6 +6,7 @@ import {
   getRandomFilm,
   sortByGenre,
   sortByGenreAlpha,
+  sortByReviewed,
 } from '../../handlers';
 import { ButtonType, ButtonOrder } from '../../handlers/types';
 
@@ -16,6 +17,7 @@ export const useSort = () => {
   const [alphaOrder, setAlphaOrder] = useState<ButtonOrder>(null);
   const [genreOrder, setGenreOrder] = useState<ButtonOrder>(null);
   const filmsByGenre = sortByGenre();
+  const reviewedFilms = sortByReviewed();
   const randomFilm = getRandomFilm();
 
   useEffect(() => {
@@ -76,6 +78,10 @@ export const useSort = () => {
           setGenreOrder(null);
           setGenreSearchedFilms(null);
         }
+        break;
+      case 'reviewed':
+        setGenreSearchedFilms(null);
+        setSearchedFilms(reviewedFilms);
         break;
       case 'random':
         setGenreSearchedFilms(null);

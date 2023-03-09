@@ -3,16 +3,16 @@ import { style } from "@vanilla-extract/css";
 export const container = style({
     display: 'flex',
     flexDirection: 'column',
-    width: '95%',
-    height: '95%',
+    width: '100%',
+    height: '100%',
     margin: 'auto',
-    marginTop: 25,
     gap: 25,
 });
 
 export const iFrameContainer = style({
     width: '100%',
     height: '100%',
+    marginTop: 75,
 });
 
 export const trailer = style({
@@ -23,7 +23,7 @@ export const trailer = style({
 });
 
 export const infoPanel = style({
-    width: '100%', 
+    width: '100%',
     display: 'grid',
     gridTemplateColumns: '1fr 2fr 1fr',
     gridTemplateRows: 'repeat(2, 1fr)',
@@ -33,6 +33,9 @@ export const infoPanel = style({
     borderRadius: 8,
     backgroundColor: 'rgb(50, 50, 50)',
     color: 'white',
+    ':first-child': {
+        borderBottom: '1px solid white',
+    }
 });
 
 export const outerPanel = style({

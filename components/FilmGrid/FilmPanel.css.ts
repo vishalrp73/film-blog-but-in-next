@@ -4,9 +4,10 @@ export const panelContainer = style({
     display: 'flex',
     alignItems: 'center',
     justifyContent: 'center',
-    width: 250,
-    height: 50,
+    width: 275,
+    height: 140,
     borderRadius: 12,
+    backgroundSize: 'cover',
     border: '2px solid orangered',
     margin: 12,
 });

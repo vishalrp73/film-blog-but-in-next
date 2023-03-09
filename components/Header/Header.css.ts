@@ -66,6 +66,26 @@ export const description = style({
     backgroundColor: 'rgba(0, 0, 0, 0.4)',
 });
 
+export const inputsContainer = style({
+    width: '70%',
+    display: 'flex',
+    flexDirection: 'column',
+    justifyContent: 'center',
+    margin: 'auto',
+});
+
 export const btnGroup = style({
     marginTop: 20,
+    display: 'flex',
+});
+
+export const resetBtn = style({
+    width: 40,
+    height: 40,
+    cursor: 'crosshair',
+    backgroundSize: 'cover',
+    margin: 'auto 0 auto auto',
+    borderRadius: 8,
+    border: '1px ridge rgb(250, 0, 162)',
+    backgroundColor: 'rgb(250, 0, 162)',
 });

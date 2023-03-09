@@ -41,12 +41,7 @@ export const EmblaCarousel: FC<Props> = ({ films }) => {
     >
       <div className={styles.carouselContainer}>
         {films.map((film) => (
-          <FilmPanel
-            carousel
-            id={film.film_id}
-            title={film.title}
-            thumbnail={film.thumbnail}
-          />
+          <FilmPanel carousel id={film.film_id} thumbnail={film.thumbnail} />
         ))}
       </div>
       {renderCarousel && (

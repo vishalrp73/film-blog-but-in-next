@@ -50,7 +50,6 @@ const FilmGrid: FC = () => {
             searchedFilms.map((searchedFilm) => (
               <FilmPanel
                 id={searchedFilm.film_id}
-                title={searchedFilm.title}
                 thumbnail={searchedFilm.thumbnail}
               />
             ))}
@@ -71,11 +70,7 @@ const FilmGrid: FC = () => {
         <div className={styles.gridContainer}>
           {films &&
             films.map((film) => (
-              <FilmPanel
-                id={film.film_id}
-                title={film.title}
-                thumbnail={film.thumbnail}
-              />
+              <FilmPanel id={film.film_id} thumbnail={film.thumbnail} />
             ))}
         </div>
       </FilmGridContainer>

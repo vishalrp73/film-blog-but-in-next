@@ -88,4 +88,23 @@ export const sortByGenre = () => {
     });
     
     return filmsByGenre;
+};
+
+export const sortByReviewed = (): Film[] => {
+    const { films, searchTerm, searchedFilms } = useFilmContext();
+    const filmsToReview = (searchTerm !== "") ? searchedFilms : films;
+    return filmsToReview.filter(film => film.review_score && film.review_text !== "");
+};
+
+export const fetchSpecialCategory = ( category: string ): Film[] => {
+    const { films } = useFilmContext();
+    const fetchedFilms: Film[] = [];
+    films.forEach(film => {
+        film.special_category.forEach(specialCategory => {
+            if (specialCategory === category) {
+                fetchedFilms.push(film);
+            }
+        })
+    });
+    return fetchedFilms;
 }

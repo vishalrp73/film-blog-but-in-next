@@ -7,18 +7,20 @@ import * as styles from './Sort.css';
 
 interface Props {
   type: ButtonType;
+  className?: string;
 }
 
-const Sort: FC<Props> = ({ type }) => {
+const Sort: FC<Props> = ({ type, className }) => {
   const { getOrder, getControllerMethod } = useSort();
 
   return (
     <input
       type="button"
-      className={clsx(styles.sortBtn, {
+      className={clsx(styles.sortBtn, className, {
         [styles.yearBtnContainer]: type === 'year',
         [styles.alphaBtnContainer]: type === 'alpha',
         [styles.genreBtnContainer]: type === 'genre',
+        [styles.reviewedBtnContainer]: type === 'reviewed',
         [styles.randomFilmContainer]: type === 'random',
       })}
       value={getButtonValue(type, getOrder(type))}

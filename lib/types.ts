@@ -24,7 +24,7 @@ export interface Film {
     trailer: string;
     trivia: string[];
     review_text: string;
-    review_score: number;
+    review_score: number | null;
     thumbnail: string;
     img_bank: string[];
     headline: string;

@@ -5,5 +5,6 @@ export {
     sortByYear,
     sortByAlpha,
     sortByGenre,
-    sortByGenreAlpha
+    sortByGenreAlpha,
+    sortByReviewed,
 } from "./sort";
