@@ -31,7 +31,6 @@ export const infoPanel = style({
     gridRowGap: 0,
     border: '5px solid salmon',
     borderRadius: 8,
-    backgroundColor: 'rgb(50, 50, 50)',
     color: 'white',
     ':first-child': {
         borderBottom: '1px solid white',

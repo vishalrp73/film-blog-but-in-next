@@ -5,7 +5,7 @@ export const footer = style({
     color: 'rgb(200, 200, 200)',
     fontSize: 12,
     width: '100%',
-    height: '8vh',
+    height: 60,
     display: 'flex',
     alignItems: 'center',
     justifyContent: 'center',

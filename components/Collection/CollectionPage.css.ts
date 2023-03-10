@@ -2,6 +2,7 @@ import { style } from "@vanilla-extract/css";
 
 export const container = style({
     height: '92vh', // 92vh because Footer is 8vh
+    overflow: 'scroll',
     display: 'flex',
     justifyContent: 'space-between',
     backgroundColor: 'rgb(15, 15, 15)',

@@ -6,15 +6,21 @@ import * as styles from './PreviewView.css';
 import { translucent } from '../../styles/translucent.css';
 
 interface PanelProps {
+  type: 'inner' | 'outer';
   children: ReactNode;
 }
 
-const OuterPanel: FC<PanelProps> = ({ children }) => {
-  return <div className={styles.outerPanel}>{children}</div>;
-};
-
-const InnerPanel: FC<PanelProps> = ({ children }) => {
-  return <div className={styles.innerPanel}>{children}</div>;
+const Panel: FC<PanelProps> = ({ type, children }) => {
+  return (
+    <div
+      className={clsx({
+        [styles.innerPanel]: type === 'inner',
+        [styles.outerPanel]: type === 'outer',
+      })}
+    >
+      {children}
+    </div>
+  );
 };
 
 interface Props {
@@ -43,47 +49,47 @@ const PreviewView: FC<Props> = ({ film }) => {
         {film && (
           <>
             {/* 1 */}
-            <OuterPanel>
+            <Panel type="outer">
               <p className={styles.heading}>Genres</p>
               {film.genre.map((genre) => (
                 <ContentLink route="genres" content={genre} />
               ))}
-            </OuterPanel>
+            </Panel>
             {/* 2 */}
-            <InnerPanel>
+            <Panel type="inner">
               <p>
                 Directed by&nbsp;
                 <ContentLink route="artist" content={film.director} />
               </p>
-            </InnerPanel>
+            </Panel>
             {/* 3 */}
-            <OuterPanel>
+            <Panel type="outer">
               <div className={styles.runtimeYear}>
                 <span>runtime: {runtime}</span>
                 <span>released in: {film.year}</span>
               </div>
-            </OuterPanel>
+            </Panel>
             {/* 4 */}
-            <OuterPanel>
+            <Panel type="outer">
               <p className={styles.heading}>Soundtrack</p>
               {film.soundtrack.map((artist) => (
                 <ContentLink route="artist" content={artist} />
               ))}
-            </OuterPanel>
+            </Panel>
             {/* 5 */}
-            <InnerPanel>
+            <Panel type="inner">
               <p className={styles.heading}>Notable actors</p>
               {film.notable_actors.map((actor) => (
                 <ContentLink route="artist" content={actor} />
               ))}
-            </InnerPanel>
+            </Panel>
             {/* 6 */}
-            <OuterPanel>
+            <Panel type="outer">
               <p className={styles.heading}>Writers</p>
               {film.writers.map((writer) => (
                 <ContentLink route="artist" content={writer} />
               ))}
-            </OuterPanel>
+            </Panel>
           </>
         )}
       </div>

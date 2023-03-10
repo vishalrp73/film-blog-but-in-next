@@ -11,8 +11,8 @@ export const container = style({
     backgroundSize: 'cover',
     color: 'white',
     borderBottom: '8px solid rgb(255, 0, 162)',
-    transition: 'max-height 0.1s',
-    transitionTimingFunction: 'ease-out',
+    // transition: 'max-height 0.1s',
+    // transitionTimingFunction: 'ease-out',
 });
 
 export const smallContainer = style({

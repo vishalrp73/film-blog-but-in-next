@@ -4,8 +4,8 @@ export const container = style({
     width: '90%',
     display: 'flex',
     flexDirection: 'column',
-    margin: 'auto',
-    paddingTop: 40,
+    paddingTop: 80,
+    margin: '0 auto auto auto',
 });
 
 export const heading = style({
@@ -27,16 +27,4 @@ export const alignStart = style({
 
 export const alignCenter = style({
     justifyContent: 'center',
-});
-
-export const categoryContainer = style({
-    padding: '20px 0',
-});
-
-export const categoryHeading = style({
-    fontSize: 24,
-    paddingBottom: 8,
-    fontStyle: 'oblique',
-    textTransform: 'uppercase',
-    color: 'Highlight',
 });
