@@ -9,8 +9,14 @@ export const panelContainer = style({
     borderRadius: 12,
     backgroundSize: 'cover',
     border: '2px solid orangered',
-    margin: 12,
+    ':hover': {
+        zoom: '1.05'
+    },
 });
+
+export const link = style({
+    height: 'max-content'
+})
 
 export const emblaSlide = style({
     flex: '0 0 100%',

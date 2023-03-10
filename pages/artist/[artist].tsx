@@ -1,7 +1,7 @@
 import type { FC } from 'react';
 import { GetStaticPropsContext } from 'next';
 import { Film } from '../../lib/types';
-import ArtistPage from '../../screens/ArtistPage';
+import CollectionPage from '../../components/Collection/CollectionPage';
 
 interface Props {
   artist: string;
@@ -10,7 +10,7 @@ interface Props {
 
 const Artist: FC<Props> = ({ artist, films }) => {
   if (artist && films) {
-    return <ArtistPage artist={artist} films={films} />;
+    return <CollectionPage heading={artist} films={films} />;
   }
 
   return null;

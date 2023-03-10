@@ -1,6 +1,6 @@
 import type { FC } from 'react';
 import { Film } from '../lib/types';
-import { Header } from '../components/FilmDetails';
+import HeaderMiniSearch from '../components/Header/HeaderMiniSearch';
 import VerticalSwipe from '../components/FilmDetails/VerticalSwipe';
 import PreviewView from '../components/FilmDetails/PreviewView';
 import FilmDive from '../components/FilmDetails/FilmDive';
@@ -20,7 +20,7 @@ const FilmDetailsPage: FC<FilmProps> = ({ film }) => {
 
   return (
     <>
-      <Header title={film.title} />
+      <HeaderMiniSearch heading={film.title} />
       <div className={styles.container}>
         <VerticalSwipe>
           <BackingImage image={previewBackingImage}>

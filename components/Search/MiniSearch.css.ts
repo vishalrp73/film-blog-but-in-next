@@ -5,7 +5,7 @@ export const superMaxContainer/*ᵀᴹ*/ = style({
     display: 'flex',
     flexDirection: 'row-reverse',
     position: 'absolute',
-    top: 0,
+    top: 16,
     right: 24,
     backgroundSize: 'cover',
     backgroundPositionX: 'center',
@@ -23,7 +23,7 @@ export const miniContainer = style({
 
 export const input = style({
     width: '100%',
-    height: 60,
+    height: 40,
     padding: 20,
     backgroundColor: '#0C0C0C',
     border: '2px ridge rgb(255, 0, 162)',
@@ -41,8 +41,8 @@ export const functionalGroup = style({
 });
 
 export const openSearchBtn = style({
-    width: 50,
-    height: 50,
+    width: 45,
+    height: 45,
     borderRadius: 12,
     position: 'absolute',
     right: 24,

@@ -93,7 +93,8 @@ export const sortByGenre = () => {
 export const sortByReviewed = (): Film[] => {
     const { films, searchTerm, searchedFilms } = useFilmContext();
     const filmsToReview = (searchTerm !== "") ? searchedFilms : films;
-    return filmsToReview.filter(film => film.review_score && film.review_text !== "");
+    const reviewedFilms = filmsToReview.filter(film => film.review_score && film.review_text !== "");
+    return randomiseFilms(reviewedFilms);
 };
 
 export const fetchSpecialCategory = ( category: string ): Film[] => {

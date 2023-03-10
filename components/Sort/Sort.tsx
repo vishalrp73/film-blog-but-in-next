@@ -1,4 +1,6 @@
-import { FC } from 'react';
+import type { FC } from 'react';
+import { useState, useEffect } from 'react';
+import { useSortContext } from '../../context/sort';
 import clsx from 'clsx';
 import { getButtonValue } from '../../handlers';
 import { useSort } from './useSort';
@@ -13,6 +15,14 @@ interface Props {
 const Sort: FC<Props> = ({ type, className }) => {
   const { getOrder, getControllerMethod } = useSort();
 
+  const retrieveButtonText = () => getButtonValue(type, getOrder(type));
+  const [buttonText, setButtonText] = useState<string>(retrieveButtonText);
+  const { yearOrder, alphaOrder, genreOrder } = useSortContext();
+
+  useEffect(() => {
+    setButtonText(getButtonValue(type, getOrder(type)));
+  }, [yearOrder, alphaOrder, genreOrder]);
+
   return (
     <input
       type="button"
@@ -23,7 +33,7 @@ const Sort: FC<Props> = ({ type, className }) => {
         [styles.reviewedBtnContainer]: type === 'reviewed',
         [styles.randomFilmContainer]: type === 'random',
       })}
-      value={getButtonValue(type, getOrder(type))}
+      value={buttonText}
       onClick={() => getControllerMethod(type)}
     />
   );

@@ -1,36 +1,32 @@
 import type { FC } from 'react';
 import clsx from 'clsx';
-import Image from 'next/image';
 import { StaticImageData } from 'next/image';
 import { getRandomNumber } from '../../handlers/sort';
 import { useFilmContext } from '../../context/films';
 import julia from '../../lib/img/julia-fox.jpg';
 import seal from '../../lib/img/golden-seal.png';
 import { Search } from '../Search';
+import { ResetButton } from '../ResetButton/ResetButton';
 import Sort from '../Sort/Sort';
-import ResetIcon from '../../lib/img/reset-icon.png';
 import * as styles from './Header.css';
 import { translucent } from '../../styles/translucent.css';
 
 const Header: FC = () => {
-  const {
-    films,
-    searchTerm,
-    setSearchedFilms,
-    setGenreSearchedFilms,
-    setSearchTerm,
-  } = useFilmContext();
+  const { searchTerm } = useFilmContext();
   const backgroundImages: StaticImageData[] = [julia];
-  const randomNumber = getRandomNumber(backgroundImages.length);
-  const selectedBannerImage = backgroundImages[randomNumber];
-  const bannerText: string =
-    'Sponsored by Coca-Cola: The world leader in cavities and general dental fuckery';
-
-  const handleReset = () => {
-    setSearchTerm('');
-    setSearchedFilms(films);
-    setGenreSearchedFilms(null);
-  };
+  const randomBackroundImageNumber = getRandomNumber(backgroundImages.length);
+  const selectedBannerImage = backgroundImages[randomBackroundImageNumber];
+  const bannerTextOptions: string[] = [
+    'Sponsored by Coca-Cola: The world leader in dental fuckery',
+    'Now in Smell-O-Vision!',
+    'JOE MAMA',
+    "We've recently aqcuired Nike",
+    "It's 90% white people!",
+  ];
+  const bannerTextRandomNumber: number = getRandomNumber(
+    bannerTextOptions.length,
+  );
+  const bannerText: string = bannerTextOptions[bannerTextRandomNumber];
 
   return (
     <div
@@ -61,10 +57,7 @@ const Header: FC = () => {
           <Sort type="random" />
           <Sort type="reviewed" />
           <Sort type="genre" />
-          {/** TO DO FIX: this breaks the sort genres if you click them and then click reset */}
-          <button className={styles.resetBtn} onClick={handleReset}>
-            <Image src={ResetIcon} />
-          </button>
+          <ResetButton />
         </div>
       </div>
     </div>

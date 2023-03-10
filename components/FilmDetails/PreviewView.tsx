@@ -2,7 +2,6 @@ import clsx from 'clsx';
 import type { FC, ReactNode } from 'react';
 import { Film } from '../../lib/types';
 import { ContentLink } from '../ContentLink';
-import { getRandomNumber } from '../../handlers/sort';
 import * as styles from './PreviewView.css';
 import { translucent } from '../../styles/translucent.css';
 
@@ -32,13 +31,12 @@ const PreviewView: FC<Props> = ({ film }) => {
         <iframe
           src={
             film.trailer +
-            `?&amp;rel=0&amp;autoplay=1&amp;controls=1&amp;modestbranding=1&amp;iv_load_policy=3`
+            `?&amp;rel=0&amp;autoplay=0&amp;controls=1&amp;modestbranding=1&amp;iv_load_policy=3`
           }
           allowFullScreen
           title="video"
           frameBorder="0"
           className={styles.trailer}
-          allow="autoplay; encrypted-media"
         />
       </div>
       <div className={clsx(styles.infoPanel, translucent)}>

@@ -1,6 +1,6 @@
 import type { FC } from 'react';
 import { GetStaticPropsContext } from 'next';
-import CategoryPage from '../../screens/CategoryPage';
+import CollectionPage from '../../components/Collection/CollectionPage';
 import { Film } from '../../lib/types';
 
 interface Props {
@@ -10,7 +10,7 @@ interface Props {
 
 const CategoryScreen: FC<Props> = ({ category, films }) => {
   if (category && films) {
-    return <CategoryPage category={category} films={films} />;
+    return <CollectionPage heading={category} films={films} />;
   }
 
   return null;

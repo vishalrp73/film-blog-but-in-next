@@ -12,7 +12,7 @@ interface Props {
 const FilmPanel: FC<Props> = ({ id, thumbnail, carousel = false }) => {
   return (
     <Link href={`/films/${id}`} key={id}>
-      <a>
+      <a className={styles.link}>
         <div
           style={{ backgroundImage: `url(${thumbnail})` }}
           className={clsx(styles.panelContainer, {

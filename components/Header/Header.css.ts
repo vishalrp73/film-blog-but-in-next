@@ -1,5 +1,4 @@
 import { style } from "@vanilla-extract/css";
-import { translucent } from "../../styles/translucent.css";
 
 export const container = style({
     width: '100%',
@@ -54,16 +53,13 @@ export const title = style({
 })
 
 export const description = style({
-    width: '50%',
+    width: 'max-content',
     display: 'flex',
     flexDirection: 'column',
     alignItems: 'center',
     padding: 20,
     margin: '30px 0',
     borderRadius: 12,
-    backdropFilter: 'blur(16px) saturate(180%)',
-    WebkitBackdropFilter: 'blur (16px) saturate(180%)',
-    backgroundColor: 'rgba(0, 0, 0, 0.4)',
 });
 
 export const inputsContainer = style({
@@ -77,15 +73,4 @@ export const inputsContainer = style({
 export const btnGroup = style({
     marginTop: 20,
     display: 'flex',
-});
-
-export const resetBtn = style({
-    width: 40,
-    height: 40,
-    cursor: 'crosshair',
-    backgroundSize: 'cover',
-    margin: 'auto 0 auto auto',
-    borderRadius: 8,
-    border: '1px ridge rgb(250, 0, 162)',
-    backgroundColor: 'rgb(250, 0, 162)',
 });

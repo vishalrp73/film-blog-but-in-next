@@ -1,7 +1,7 @@
 import type { FC } from 'react';
 import { GetStaticPropsContext } from 'next';
 import { Film } from '../../lib/types';
-import GenrePage from '../../screens/GenrePage';
+import CollectionPage from '../../components/Collection/CollectionPage';
 
 interface Props {
   genre: string;
@@ -10,7 +10,7 @@ interface Props {
 
 const GenreScreen: FC<Props> = ({ genre, films }) => {
   if (genre && films) {
-    return <GenrePage genre={genre} films={films} />;
+    return <CollectionPage heading={genre} films={films} />;
   }
 
   return null;
