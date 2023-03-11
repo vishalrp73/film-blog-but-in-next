@@ -2,7 +2,7 @@ export interface Comment {
     _id: number;
     name: string;
     comment_text: string;
-    timestamp: Date;
+    timestamp: string;
     upvotes: number;
     downvotes: number;
 }

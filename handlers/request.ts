@@ -16,4 +16,23 @@ export const fetchHttpRoute = async (id: number) => {
     .then(data => data)
     .catch(err => console.error('fuck', err))
     return data;
+};
+
+type Vote = {
+    filmId: number,
+    commentId: number;
+}
+
+export const postUpvote = async (payload: Vote) => {
+    const data = await fetch(`http://localhost:4000/upvote/${payload.filmId}/${payload.commentId}`)
+    .then(res => console.log(res))
+    .catch(err => console.error('fuck', err));
+    return data;
+}
+
+export const postDownvote = async (payload: Vote) => {
+    const data = await fetch(`http://localhost:4000/downvote/${payload.filmId}/${payload.commentId}`)
+    .then(res => console.log(res))
+    .catch(err => console.error('fuck', err));
+    return data;
 }

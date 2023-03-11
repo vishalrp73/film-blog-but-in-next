@@ -1,4 +1,4 @@
-import type { Film, FilmsByGenre } from "../lib/types";
+import type { Comment, Film, FilmsByGenre } from "../lib/types";
 import { ButtonType, ButtonOrder } from "./types";
 import { useFilmContext } from "../context/films";
 
@@ -108,4 +108,12 @@ export const fetchSpecialCategory = ( category: string ): Film[] => {
         })
     });
     return fetchedFilms;
+};
+
+export const sortCommentsByUpvotes = (comments: Comment[]): Comment[] => {
+    const compareFn = (a: number, b: number): number => {
+        return a - b;
+    };
+    const sort = comments.sort((a, b) => compareFn(a.upvotes, b.upvotes))
+    return sort.reverse();
 }

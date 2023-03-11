@@ -2,6 +2,7 @@ import { style } from "@vanilla-extract/css";
 
 export const link = style({
     textDecoration: 'none',
+    height: 'max-content',
 });
 
 export const artistList = style({
