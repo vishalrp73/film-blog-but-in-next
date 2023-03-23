@@ -2,38 +2,79 @@ import {
   createContext,
   useContext,
   useState,
+  useEffect,
   Dispatch,
   SetStateAction,
   ReactNode,
-  useEffect,
+  FC,
 } from 'react';
-import { Film } from '../lib/types';
+import { Film, FilmsByGenre } from '../lib/types';
+import { randomiseFilms } from '../handlers/sort';
+import { fetchHttpBasic } from '../handlers/request';
 
-type ContextFilms = [Film[], Dispatch<SetStateAction<Film[]>>];
+type ContextFilms = {
+  films: Film[];
+  setFilms: Dispatch<SetStateAction<Film[] | undefined>>;
+  searchTerm: string;
+  setSearchTerm: Dispatch<SetStateAction<string>>;
+  searchedFilms: Film[];
+  setSearchedFilms: Dispatch<SetStateAction<Film[] | undefined>>;
+  genreSearchedFilms: FilmsByGenre | null;
+  setGenreSearchedFilms: Dispatch<SetStateAction<FilmsByGenre | null>>;
+};
 
 interface Props {
   children: ReactNode;
 }
 
-const FilmContext = createContext<ContextFilms>([[], () => null]);
+const FilmContext = createContext<ContextFilms>({
+  films: [],
+  setFilms: () => null,
+  searchTerm: '',
+  setSearchTerm: () => null,
+  searchedFilms: [],
+  setSearchedFilms: () => null,
+  genreSearchedFilms: [],
+  setGenreSearchedFilms: () => null,
+});
 
-export const FilmProvider = ({ children }: Props) => {
-  const [films, setFilms] = useState<Film[]>();
+export const FilmProvider: FC<Props> = ({ children }) => {
+  const [films, setFilms] = useState<Film[] | undefined>();
+  const [searchTerm, setSearchTerm] = useState<string>('');
+  const [searchedFilms, setSearchedFilms] = useState<Film[] | undefined>();
+  const [genreSearchedFilms, setGenreSearchedFilms] =
+    useState<FilmsByGenre | null>(null);
 
   useEffect(() => {
-    fetch('http://localhost:4000/films')
-      .then((res) => res.json())
-      .then((data) => setFilms(data))
-      .catch((err) => console.log('fuck', err));
+    fetchHttpBasic('films')
+      .then((data) => {
+        const randomisedData = randomiseFilms(data);
+        setFilms([...randomisedData]);
+        setSearchedFilms([...randomisedData]);
+      })
+      .catch((err) => console.error('fuck', err));
   }, []);
 
-  return (
-    films && (
-      <FilmContext.Provider value={[films, setFilms]}>
+  if (films && searchedFilms) {
+    return (
+      <FilmContext.Provider
+        value={{
+          films: films,
+          setFilms: setFilms,
+          searchTerm: searchTerm,
+          setSearchTerm: setSearchTerm,
+          searchedFilms: searchedFilms,
+          setSearchedFilms: setSearchedFilms,
+          genreSearchedFilms: genreSearchedFilms,
+          setGenreSearchedFilms: setGenreSearchedFilms,
+        }}
+      >
         {children}
       </FilmContext.Provider>
-    )
-  );
+    );
+  }
+
+  return null;
 };
 
 export const useFilmContext = () => {

@@ -1,13 +1,13 @@
 import { GetStaticPropsContext } from 'next';
 import { Film } from '../../lib/types';
-import FilmDetails from '../../components/FilmDetails';
+import FilmDetailsPage from '../../screens/FilmDetailsPage';
 
 interface PageProps {
   film: Film;
 }
 
 function FilmPage({ film }: PageProps) {
-  return <FilmDetails film={film} />;
+  return <FilmDetailsPage film={film} />;
 }
 
 export default FilmPage;
@@ -16,7 +16,7 @@ export async function getStaticPaths() {
   const filmsAPICheck = await fetch('http://localhost:4000/films').then((r) =>
     r.json().then((d) => d.length),
   );
-  const pathParams = [];
+  const pathParams: { params: { filmId: string } }[] = [];
   for (let i = 1; i <= filmsAPICheck; i++) {
     pathParams.push({ params: { filmId: `${i}` } });
   }
