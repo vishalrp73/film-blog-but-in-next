@@ -17,11 +17,11 @@ const Header: FC = () => {
   const randomBackroundImageNumber = getRandomNumber(backgroundImages.length);
   const selectedBannerImage = backgroundImages[randomBackroundImageNumber];
   const bannerTextOptions: string[] = [
-    'Sponsored by Coca-Cola: The world leader in dental fuckery',
     'Now in Smell-O-Vision!',
     'JOE MAMA',
-    "We've recently aqcuired Nike",
     "It's 90% white people!",
+    'This is peak film-bro (circa 2021)',
+    'Powered by hater-ade',
   ];
   const bannerTextRandomNumber: number = getRandomNumber(
     bannerTextOptions.length,
