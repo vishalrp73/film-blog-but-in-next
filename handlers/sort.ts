@@ -2,7 +2,7 @@ import type { Comment, Film, FilmsByGenre } from "../lib/types";
 import { ButtonType, ButtonOrder } from "./types";
 import { useFilmContext } from "../context/films";
 
-export const randomiseFilms = (films: Film[]) => {
+export const randomiseFilms = (films: Film[]): Film[]  => {
     for (let i = films.length - 1; i > 0; i--) {
         const j = Math.floor(Math.random() * (i + 1));
         const temp = films[i];
@@ -12,7 +12,7 @@ export const randomiseFilms = (films: Film[]) => {
       return films;
 };
 
-export const getRandomNumber = (length: number) => {
+export const getRandomNumber = (length: number): number => {
     const randomNumber = Math.random() * length;
     return Math.floor(randomNumber);
 }
@@ -23,7 +23,7 @@ export const getRandomFilm = (): Film => {
     return films[randomNumber];
 };
 
-export const getButtonValue = (type: ButtonType, order?: ButtonOrder ) => {
+export const getButtonValue = (type: ButtonType, order?: ButtonOrder ): string => {
     const base = type === 'random' ? "I'M FEELING LUCKY" : type;
     if (order === 'asc') return `${base} ⇡`;
     if (order === 'desc') return `${base} ⇣`;
@@ -40,7 +40,7 @@ export const sortByYear = (order: ButtonOrder, films: Film[]): Film[] => {
     return films;
 }
 
-export const sortByGenreAlpha = (order: ButtonOrder, genreSorted: FilmsByGenre) => {
+export const sortByGenreAlpha = (order: ButtonOrder, genreSorted: FilmsByGenre): FilmsByGenre | null => {
     const sort = genreSorted.sort((a, b) => {
         const genreA = a.genre;
         const genreB = b.genre;
@@ -58,7 +58,7 @@ export const sortByAlpha = (order: ButtonOrder, films: Film[]): Film[] => {
     return films;
 }
 
-export const getTopFive = (topFive: string[]) => {
+export const getTopFive = (topFive: string[]): Film[] | null => {
     // to do: move this implementation to backend (logic built)
     const { films } = useFilmContext();
     const collection: Film[] = [];
@@ -70,7 +70,7 @@ export const getTopFive = (topFive: string[]) => {
     return collection;
 }
 
-export const sortByGenre = () => {
+export const sortByGenre = (): FilmsByGenre => {
     const { searchedFilms } = useFilmContext();
     const genreCollection: string[] = [];
     searchedFilms.forEach(film => {
