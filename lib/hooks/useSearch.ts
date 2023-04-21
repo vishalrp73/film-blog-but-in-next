@@ -5,8 +5,9 @@ import { useFilmContext } from '../../context/films';
 import Fuse from 'fuse.js';
 
 export const useSearch = (searchTerm: string): void => {
-    const { films, setSearchedFilms} = useFilmContext();
-    const fuseSearch = new Fuse(films, {keys: [
+  const { films, setSearchedFilms } = useFilmContext();
+  const fuseSearch = new Fuse(films, {
+    keys: [
       'title',
       'director',
       'year',
@@ -23,21 +24,22 @@ export const useSearch = (searchTerm: string): void => {
     ],
     includeScore: true,
     threshold: 0.3,
-    ignoreLocation: true,});
+    ignoreLocation: true,
+  });
 
-    const handleSearch = useDebouncedCallback((searchTerm: string) => {
-      const filtered = fuseSearch.search(searchTerm).map(({ item }) => item);
-        setSearchedFilms([...filtered]);
-    }, 200);
+  const handleSearch = useDebouncedCallback((searchTerm: string) => {
+    const filtered = fuseSearch.search(searchTerm).map(({ item }) => item);
+    setSearchedFilms([...filtered]);
+  }, 200);
 
-    useEffect(() => {
-      if (searchTerm.length === 0) {
-        const shuffledFilms = randomiseFilms(films);
-        setSearchedFilms([...shuffledFilms]);
-      }
+  useEffect(() => {
+    if (searchTerm.length === 0) {
+      const shuffledFilms = randomiseFilms(films);
+      setSearchedFilms([...shuffledFilms]);
+    }
 
-      if (searchTerm.length > 0) {
-        handleSearch(searchTerm)
-      }
-    }, [searchTerm]);
+    if (searchTerm.length > 0) {
+      handleSearch(searchTerm);
+    }
+  }, [searchTerm]);
 };
