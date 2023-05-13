@@ -1,6 +1,6 @@
 import type { Metadata } from 'next';
 import { Film } from '@/lib/types';
-import { getFilms } from '@/lib/getFilms';
+import { getFilms } from '@/lib/fetch';
 import Link from 'next/link';
 
 export const metadata: Metadata = {

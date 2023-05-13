@@ -1,30 +1,28 @@
-import { getCategories } from '@/lib/fetch';
 import type { Metadata } from 'next';
 import Link from 'next/link';
+import { getArtists } from '@/lib/fetch';
 
 export const metadata: Metadata = {
-  title: 'categories',
+  title: 'artists',
 };
 
 export default async function Page() {
-  const data: Promise<string[]> = getCategories();
-  const categories = await data;
+  const data: Promise<string[]> = getArtists();
+  const artists = await data;
 
-  const content = (
+  return (
     <section>
       <h2>
         <Link href="/">Back to Home</Link>
       </h2>
       <br />
-      {categories.map((category) => (
+      {artists.map((artist) => (
         <div>
           <h5>
-            <Link href={`/categories/${category}`}>{category}</Link>
+            <Link href={`/artists/${artist}`}>{artist}</Link>
           </h5>
         </div>
       ))}
     </section>
   );
-
-  return content;
 }

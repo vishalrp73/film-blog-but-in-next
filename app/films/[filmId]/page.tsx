@@ -1,5 +1,5 @@
 import { Film } from '@/lib/types';
-import getFilm from '@/lib/getFilm';
+import { getFilm } from '@/lib/fetch';
 
 type Params = {
   params: {
