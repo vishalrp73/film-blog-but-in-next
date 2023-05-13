@@ -1,10 +1,12 @@
 export {
-    randomiseFilms,
-    getRandomFilm,
-    getButtonValue,
-    sortByYear,
-    sortByAlpha,
-    sortByGenre,
-    sortByGenreAlpha,
-    sortByReviewed,
-} from "./sort";
+  randomiseFilms,
+  getRandomFilm,
+  getButtonValue,
+  sortByYear,
+  sortByAlpha,
+  sortByGenre,
+  sortByGenreAlpha,
+  sortByReviewed,
+  sortByReviewScore,
+  sortCommentsByUpvotes,
+} from './sort';

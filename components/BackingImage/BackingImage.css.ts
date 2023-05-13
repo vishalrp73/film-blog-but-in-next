@@ -1,7 +1,7 @@
-import { style } from "@vanilla-extract/css";
+import { style } from '@vanilla-extract/css';
 
 export const container = style({
-    backgroundSize: 'cover',
-    width: '100%',
-    height: '100%',
+  backgroundSize: 'cover',
+  width: '100%',
+  height: '100%',
 });
