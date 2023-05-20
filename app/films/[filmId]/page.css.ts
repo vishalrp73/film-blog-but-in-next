@@ -1,5 +1,10 @@
 import { style } from '@vanilla-extract/css';
 
+export const wrapper = style({
+  height: '100vh',
+  backgroundSize: 'cover',
+});
+
 export const fixedHeaderContainer = style({
   position: 'fixed',
   zIndex: 50,
@@ -7,10 +12,17 @@ export const fixedHeaderContainer = style({
   left: 120,
 });
 
+export const headingTitle = style({
+  color: 'white',
+});
+
 export const container = style({
   width: '100%',
   display: 'flex',
-  paddingTop: 80,
+  paddingTop: 120,
+  paddingLeft: 24,
+  paddingRight: 24,
+  gap: 24,
 });
 
 export const miniSearchContainer = style({
