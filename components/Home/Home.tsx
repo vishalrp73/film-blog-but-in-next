@@ -1,26 +1,36 @@
 'use client';
-import type { FC, ReactNode } from 'react';
+import type { FC } from 'react';
 import { SearchProvider } from '@/context/search';
 import { useFilms } from '@/lib/hooks/useFilms';
 import { Film } from '@/lib/types';
-import SearchSort from '../SearchSort/SearchSort';
+import Header from '../Header/Header';
 import FilmGrid from '../FilmGrid/FilmGrid';
+import { StaticImageData } from 'next/image';
 
-const Home: FC<{ movies: Film[]; children: ReactNode }> = ({
+interface Props {
+  bannerText: string;
+  selectedBannerImage: StaticImageData;
+  movies: Film[];
+}
+
+const HomeComponent: FC<Props> = ({
+  bannerText,
+  selectedBannerImage,
   movies,
-  children,
 }) => {
   const { films } = useFilms(movies);
-
   return (
     <SearchProvider>
       <div style={{ display: 'flex', flexDirection: 'column' }}>
-        <SearchSort films={films ?? []} />
+        <Header
+          films={films ?? []}
+          bannerText={bannerText}
+          selectedBannerImage={selectedBannerImage}
+        />
         <FilmGrid films={films ?? []} />
       </div>
-      {children}
     </SearchProvider>
   );
 };
 
-export default Home;
+export default HomeComponent;

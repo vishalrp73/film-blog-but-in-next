@@ -1,31 +1,23 @@
-import Link from 'next/link';
 import { getFilms } from '@/lib/fetch';
 import { Film } from '@/lib/types';
 import HomeComponent from '@/components/Home/Home';
 import * as styles from './page.css';
 import { randomiseFilms } from '@/lib/functions';
+import { getHeaderContent } from '@/components/Header/getHeaderContent';
 
 export default async function Home() {
   const data: Promise<Film[]> = getFilms();
   const films = await data;
   const randomisedFilms = randomiseFilms(films);
+  const { selectedBannerImage, bannerText } = getHeaderContent();
 
   return (
     <main className={styles.main}>
-      <h1 style={{ color: 'white' }}>Header</h1>
-      <h1 style={{ color: 'white' }}>Search &amp; Sort Options</h1>
-      <HomeComponent movies={randomisedFilms ?? []}>
-        <h1>===========</h1>
-      </HomeComponent>
-
-      <h1 style={{ color: 'white' }}>Film Grid</h1>
-      <Link href="/films">To films</Link>
-      <Link href="/categories">To categories</Link>
-      <Link href="/artists">To artist</Link>
-      <Link href="/genres">To genres</Link>
-      {/* {films.map((film) => (
-        <h2 style={{ color: 'white' }}>{film.title}</h2>
-      ))} */}
+      <HomeComponent
+        bannerText={bannerText}
+        selectedBannerImage={selectedBannerImage}
+        movies={randomisedFilms ?? []}
+      />
     </main>
   );
 }
