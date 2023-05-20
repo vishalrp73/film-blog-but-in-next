@@ -1,6 +1,6 @@
 import type { FC } from 'react';
 import clsx from 'clsx';
-import { ButtonOrder, ButtonType, Film } from '@/lib/types';
+import { ButtonOrder, ButtonType } from '@/lib/types';
 import * as styles from './Sort.css';
 
 const getButtonValue = (type: ButtonType, order: ButtonOrder): string => {
@@ -14,13 +14,14 @@ interface Props {
   type: ButtonType;
   order: ButtonOrder;
   handleSort: () => void;
+  className?: string;
 }
 
-const Sort: FC<Props> = ({ type, order, handleSort }) => {
+const Sort: FC<Props> = ({ type, order, handleSort, className }) => {
   return (
     <input
       type="button"
-      className={clsx(styles.sortBtn)}
+      className={clsx(styles.sortBtn, className)}
       value={getButtonValue(type, order)}
       onClick={() => handleSort()}
     />

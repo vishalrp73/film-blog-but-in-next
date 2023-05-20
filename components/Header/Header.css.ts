@@ -36,8 +36,8 @@ export const goldenSeal = style({
 
 export const hamburgerContainer = style({
   position: 'fixed',
-  top: 16,
-  right: 16,
+  top: 24,
+  right: 24,
   zIndex: 1,
 });
 

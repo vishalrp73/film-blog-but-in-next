@@ -12,6 +12,7 @@ export const btnContainer = style({
   borderRadius: 4,
   border: 'none',
   backgroundColor: 'rgb(250, 3, 162)',
+  cursor: 'pointer',
 });
 
 export const menuDropdown = style({
