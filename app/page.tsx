@@ -3,18 +3,19 @@ import { getFilms } from '@/lib/fetch';
 import { Film } from '@/lib/types';
 import HomeComponent from '@/components/Home/Home';
 import * as styles from './page.css';
-import Search from '@/components/Search/Search';
+import { randomiseFilms } from '@/lib/functions';
 
 export default async function Home() {
   const data: Promise<Film[]> = getFilms();
   const films = await data;
+  const randomisedFilms = randomiseFilms(films);
 
   return (
     <main className={styles.main}>
       <h1 style={{ color: 'white' }}>Header</h1>
       <h1 style={{ color: 'white' }}>Search &amp; Sort Options</h1>
-      <HomeComponent movies={films ?? []}>
-        <h1>Hello</h1>
+      <HomeComponent movies={randomisedFilms ?? []}>
+        <h1>===========</h1>
       </HomeComponent>
 
       <h1 style={{ color: 'white' }}>Film Grid</h1>

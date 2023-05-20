@@ -1,3 +1,6 @@
+import { getRandomNumber } from '../functions/randomise';
+import { Film } from '../types';
+
 export const getFilms = async () => {
   return await fetch('http://localhost:4000/films')
     .then((res) => res.json())

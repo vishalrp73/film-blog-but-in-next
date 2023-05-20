@@ -25,9 +25,6 @@ const SearchContext = createContext<ContextSearch>({
 
 export const SearchProvider: FC<Props> = ({ children }) => {
   const [searchedFilms, setSearchedFilms] = useState<Film[]>([]);
-
-  console.log('context', searchedFilms);
-
   return (
     <SearchContext.Provider
       value={{

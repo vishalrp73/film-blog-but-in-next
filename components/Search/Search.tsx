@@ -1,12 +1,21 @@
-'use client';
-import type { FC } from 'react';
-import { useSearch } from '@/lib/hooks/useSearch';
+import type { Dispatch, FC, SetStateAction } from 'react';
 import { Film } from '@/lib/types';
 
-const Search: FC<{ films: Film[] }> = ({ films }) => {
-  const { handleSearch } = useSearch(films);
+interface Props {
+  searchTerm: string;
+  setSearchTerm: Dispatch<SetStateAction<string>>;
+  randomFilm: Film;
+}
 
-  return <input type="text" onChange={(e) => handleSearch(e.target.value)} />;
+const Search: FC<Props> = ({ searchTerm, setSearchTerm, randomFilm }) => {
+  return (
+    <input
+      type="text"
+      value={searchTerm}
+      onChange={(e) => setSearchTerm(e.target.value)}
+      placeholder={`enter a film e.g ... ${randomFilm.title}`}
+    />
+  );
 };
 
 export default Search;

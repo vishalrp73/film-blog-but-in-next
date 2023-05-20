@@ -1,12 +1,12 @@
 'use client';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { useSearchContext } from '@/context/search';
 import { Film } from '../types';
 import Fuse from 'fuse.js';
 
 export const useSearch = (films: Film[]) => {
-  const [searchTerm, setSearchTerm] = useState<string | null>(null);
-  const { searchedFilms, setSearchedFilms } = useSearchContext();
+  const [searchTerm, setSearchTerm] = useState<string>('');
+  const { setSearchedFilms } = useSearchContext();
 
   const fuseSearch = new Fuse(films, {
     keys: [
@@ -29,15 +29,18 @@ export const useSearch = (films: Film[]) => {
     ignoreLocation: true,
   });
 
-  const handleSearch = (term: string) => {
-    setSearchTerm(term);
-    const filtered = fuseSearch.search(term).map(({ item }) => item);
+  useEffect(() => {
+    const filtered = fuseSearch.search(searchTerm).map(({ item }) => item);
     setSearchedFilms([...filtered]);
-    console.log('useSearch', searchedFilms);
+  }, [searchTerm]);
+
+  const handleClear = () => {
+    setSearchTerm('');
   };
 
   return {
     searchTerm,
-    handleSearch,
+    setSearchTerm,
+    handleClear,
   };
 };
