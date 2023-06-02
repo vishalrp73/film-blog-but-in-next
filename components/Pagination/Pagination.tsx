@@ -1,14 +1,62 @@
-import { FC, useEffect } from 'react';
-import { useState } from 'react';
+import type { FC, Dispatch, SetStateAction } from 'react';
+import { useEffect, useState } from 'react';
+import clsx from 'clsx';
 import { Film } from '@/lib/types';
 import FilmTile from '../FilmTile/FilmTile';
-
-const amounts = [20, 25, 50];
+import * as styles from './Pagination.css';
 
 const sliceFilms = (films: Film[], splitSize: number) => {
   const numberOfPages = Math.ceil(films.length / splitSize);
   return Array.from({ length: numberOfPages }, (v, index) =>
     films.slice(index * splitSize, index * splitSize + splitSize),
+  );
+};
+
+interface PageBtn {
+  slicedFilms: Film[][];
+  setSelectedFilms: Dispatch<SetStateAction<Film[]>>;
+  centred?: boolean;
+}
+
+const PageButtons: FC<PageBtn> = ({
+  slicedFilms,
+  setSelectedFilms,
+  centred,
+}) => {
+  const handlePagination = (index: number) => {
+    setSelectedFilms(slicedFilms[index]);
+  };
+
+  return (
+    <div className={styles.filterButtons}>
+      {slicedFilms.map((f, idx) => (
+        <button
+          type="button"
+          value={idx}
+          onClick={() => handlePagination(idx)}
+          className={styles.filterBtn}
+        >
+          {idx + 1}
+        </button>
+      ))}
+    </div>
+  );
+};
+
+interface AmountBtn {
+  amountNum: number;
+  setAmount: Dispatch<SetStateAction<number>>;
+}
+
+const AmountButton: FC<AmountBtn> = ({ amountNum, setAmount }) => {
+  return (
+    <button
+      type="button"
+      onClick={() => setAmount(amountNum)}
+      className={styles.filterBtn}
+    >
+      {amountNum}
+    </button>
   );
 };
 
@@ -19,10 +67,6 @@ const Pagination: FC<{ films: Film[] }> = ({ films }) => {
   );
   const [selectedFilms, setSelectedFilms] = useState<Film[]>(slicedFilms[0]);
 
-  const handlePagination = (index: number) => {
-    setSelectedFilms(slicedFilms[index]);
-  };
-
   useEffect(() => {
     setSlicedFilms(sliceFilms(films, amount));
   }, [amount]);
@@ -32,28 +76,28 @@ const Pagination: FC<{ films: Film[] }> = ({ films }) => {
   }, [slicedFilms]);
 
   return (
-    <div>
-      <div style={{ display: 'flex', gap: 8 }}>
-        {slicedFilms.map((films, index) => (
-          <button
-            type="button"
-            value={index}
-            onClick={() => handlePagination(index)}
-          >
-            page {index + 1}
-          </button>
-        ))}
-        <button type="button" onClick={() => setAmount(20)}>
-          20
-        </button>
-        <button type="button" onClick={() => setAmount(50)}>
-          50
-        </button>
+    <div className={styles.container}>
+      <div className={styles.menuContainer}>
+        <PageButtons
+          slicedFilms={slicedFilms}
+          setSelectedFilms={setSelectedFilms}
+        />
+        <div className={styles.filterButtons}>
+          <AmountButton amountNum={20} setAmount={setAmount} />
+          <AmountButton amountNum={50} setAmount={setAmount} />
+        </div>
       </div>
-      <div style={{ display: 'flex', flexWrap: 'wrap', gap: 12 }}>
+      <div className={styles.gridContainer}>
         {selectedFilms.map((film) => (
           <FilmTile id={film.film_id} thumbnail={film.thumbnail} />
         ))}
+      </div>
+      <div className={clsx(styles.menuContainer, styles.centredButtons)}>
+        <PageButtons
+          slicedFilms={slicedFilms}
+          setSelectedFilms={setSelectedFilms}
+          centred
+        />
       </div>
     </div>
   );

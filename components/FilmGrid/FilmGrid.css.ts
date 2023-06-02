@@ -17,6 +17,12 @@ export const container = style({
   gap: 16,
 });
 
+export const searchGridContainer = style({
+  width: '80%',
+  margin: '0 auto',
+  paddingTop: 80,
+});
+
 export const title = style({
   margin: '0 auto auto 40px',
 });
