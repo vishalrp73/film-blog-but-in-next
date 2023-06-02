@@ -9,7 +9,7 @@ interface Props {
 
 const FilmTile: FC<Props> = ({ id, thumbnail }) => {
   return (
-    <Link href={`/films/${id}`} key={id}>
+    <Link href={`/films/${id}`}>
       <div
         style={{ backgroundImage: `url(${thumbnail})` }}
         className={styles.panelContainer}

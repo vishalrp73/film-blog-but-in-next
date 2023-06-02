@@ -14,14 +14,14 @@ const sliceFilms = (films: Film[], splitSize: number) => {
 
 interface PageBtn {
   slicedFilms: Film[][];
+  selectedFilms: Film[];
   setSelectedFilms: Dispatch<SetStateAction<Film[]>>;
-  centred?: boolean;
 }
 
 const PageButtons: FC<PageBtn> = ({
   slicedFilms,
+  selectedFilms,
   setSelectedFilms,
-  centred,
 }) => {
   const handlePagination = (index: number) => {
     setSelectedFilms(slicedFilms[index]);
@@ -31,10 +31,13 @@ const PageButtons: FC<PageBtn> = ({
     <div className={styles.filterButtons}>
       {slicedFilms.map((f, idx) => (
         <button
+          key={idx}
           type="button"
           value={idx}
           onClick={() => handlePagination(idx)}
-          className={styles.filterBtn}
+          className={clsx(styles.filterBtn, {
+            [styles.activeBtn]: slicedFilms[idx] === selectedFilms,
+          })}
         >
           {idx + 1}
         </button>
@@ -45,15 +48,18 @@ const PageButtons: FC<PageBtn> = ({
 
 interface AmountBtn {
   amountNum: number;
+  amount: number;
   setAmount: Dispatch<SetStateAction<number>>;
 }
 
-const AmountButton: FC<AmountBtn> = ({ amountNum, setAmount }) => {
+const AmountButton: FC<AmountBtn> = ({ amountNum, amount, setAmount }) => {
   return (
     <button
       type="button"
       onClick={() => setAmount(amountNum)}
-      className={styles.filterBtn}
+      className={clsx(styles.filterBtn, {
+        [styles.activeBtn]: amountNum === amount,
+      })}
     >
       {amountNum}
     </button>
@@ -69,6 +75,10 @@ const Pagination: FC<{ films: Film[] }> = ({ films }) => {
 
   useEffect(() => {
     setSlicedFilms(sliceFilms(films, amount));
+  }, [films]);
+
+  useEffect(() => {
+    setSlicedFilms(sliceFilms(films, amount));
   }, [amount]);
 
   useEffect(() => {
@@ -80,23 +90,28 @@ const Pagination: FC<{ films: Film[] }> = ({ films }) => {
       <div className={styles.menuContainer}>
         <PageButtons
           slicedFilms={slicedFilms}
+          selectedFilms={selectedFilms}
           setSelectedFilms={setSelectedFilms}
         />
         <div className={styles.filterButtons}>
-          <AmountButton amountNum={20} setAmount={setAmount} />
-          <AmountButton amountNum={50} setAmount={setAmount} />
+          <AmountButton amountNum={20} amount={amount} setAmount={setAmount} />
+          <AmountButton amountNum={50} amount={amount} setAmount={setAmount} />
         </div>
       </div>
       <div className={styles.gridContainer}>
         {selectedFilms.map((film) => (
-          <FilmTile id={film.film_id} thumbnail={film.thumbnail} />
+          <FilmTile
+            key={film.film_id}
+            id={film.film_id}
+            thumbnail={film.thumbnail}
+          />
         ))}
       </div>
       <div className={clsx(styles.menuContainer, styles.centredButtons)}>
         <PageButtons
           slicedFilms={slicedFilms}
+          selectedFilms={selectedFilms}
           setSelectedFilms={setSelectedFilms}
-          centred
         />
       </div>
     </div>

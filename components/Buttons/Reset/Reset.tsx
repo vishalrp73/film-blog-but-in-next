@@ -21,7 +21,7 @@ const Reset: FC<Props> = ({
 
   const handleReset = () => {
     handleClear();
-    setSearchedFilms(films);
+    setSearchedFilms([]);
     setYearOrder(null);
     setAlphaOrder(null);
   };

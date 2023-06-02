@@ -38,9 +38,19 @@ export const filterBtn = style({
   borderRadius: 4,
   border: 'white',
   color: 'white',
+  ':hover': {
+    border: '2px double white',
+  },
+  ':active': {
+    filter: 'brightness(2)',
+  },
 });
 
 export const centredButtons = style({
   justifyContent: 'center',
   paddingTop: 40,
+});
+
+export const activeBtn = style({
+  backgroundColor: '#500080',
 });

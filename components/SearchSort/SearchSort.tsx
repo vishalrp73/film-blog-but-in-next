@@ -1,11 +1,11 @@
-import type { Dispatch, FC, SetStateAction } from 'react';
-import { useSearch } from '@/lib/hooks/useSearch';
+import { getRandomFilm } from '@/lib/functions';
 import { useSort } from '@/lib/hooks/useSort';
+import { Film } from '@/lib/types';
+import type { Dispatch, FC, SetStateAction } from 'react';
+import Reset from '../Buttons/Reset/Reset';
 import Search from '../Search/Search';
 import Sort from '../Sort/Sort';
-import Reset from '../Buttons/Reset/Reset';
-import { Film } from '@/lib/types';
-import { getRandomFilm } from '@/lib/functions';
+import * as styles from './SearchSort.css';
 
 interface Props {
   films: Film[];
@@ -13,7 +13,6 @@ interface Props {
   setSearchTerm: Dispatch<SetStateAction<string>>;
   handleClear: () => void;
 }
-import * as styles from './SearchSort.css';
 
 const SearchSort: FC<Props> = ({
   films,
