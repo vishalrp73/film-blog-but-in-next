@@ -10,6 +10,7 @@ export const fixedHeaderContainer = style({
   zIndex: 50,
   top: 26,
   left: 120,
+  display: 'flex',
 });
 
 export const headingTitle = style({

@@ -3,7 +3,7 @@ import { style } from '@vanilla-extract/css';
 export const yearReviewContainer = style({
   display: 'flex',
   justifyContent: 'space-between',
-  width: '90%',
+  width: '100%',
   height: 60,
   margin: '0 auto',
 });

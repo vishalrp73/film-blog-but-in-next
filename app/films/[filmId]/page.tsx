@@ -1,10 +1,10 @@
-import { Film } from '@/lib/types';
-import { getFilm, getFilms } from '@/lib/fetch';
-import FilmDetails from '@/components/FilmDetails/FilmDetails';
-import { getRandomNumber, randomiseFilms } from '@/lib/functions';
-import SidebarPanel from '@/components/SidebarPanel/SidebarPanel';
-import * as styles from './page.css';
+import HeaderMenu from '@/components/FilmDetails/HeaderMenu';
 import MainContent from '@/components/FilmDetails/MainContent';
+import SidebarPanel from '@/components/SidebarPanel/SidebarPanel';
+import { getFilm, getFilms } from '@/lib/fetch';
+import { getRandomNumber, randomiseFilms } from '@/lib/functions';
+import { Film } from '@/lib/types';
+import * as styles from './page.css';
 
 type Params = {
   params: {
@@ -25,8 +25,6 @@ export default async function Film({ params: { filmId } }: Params) {
   const randomBgImageNumber = getRandomNumber(trivia.length);
   const bgImage = img_bank[randomBgImageNumber];
 
-  console.log(film);
-
   return (
     <div
       className={styles.wrapper}
@@ -35,7 +33,7 @@ export default async function Film({ params: { filmId } }: Params) {
       <div className={styles.fixedHeaderContainer}>
         <h2 className={styles.headingTitle}>{film.title}</h2>
         <div className={styles.miniSearchContainer}>
-          <FilmDetails films={randomisedFilms} />
+          <HeaderMenu films={randomisedFilms} />
         </div>
       </div>
       <div className={styles.container}>

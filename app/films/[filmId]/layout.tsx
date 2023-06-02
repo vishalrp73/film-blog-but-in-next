@@ -1,12 +1,7 @@
-import Link from 'next/link';
-import clsx from 'clsx';
 import { translucent } from '@/styles/translucent.css';
+import clsx from 'clsx';
 import * as styles from './layout.css';
-
-export const metadata = {
-  title: 'Film',
-  description: 'now in NextJS 13!',
-};
+import Back from '@/components/Buttons/Back/Back';
 
 export default function FilmLayout({
   children,
@@ -16,9 +11,7 @@ export default function FilmLayout({
   return (
     <div>
       <div className={clsx(styles.headerContainer, translucent)}>
-        <Link href="/">
-          <button className={styles.backBtn}>&#8592; back</button>
-        </Link>
+        <Back />
       </div>
       {children}
     </div>

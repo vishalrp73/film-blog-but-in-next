@@ -9,8 +9,8 @@ export const container = style({
 });
 
 export const trailerContainer = style({
-  height: 320,
-  backgroundColor: 'red',
+  minHeight: 320,
+  height: 480,
 });
 
 export const videoTrailer = style({
@@ -22,6 +22,7 @@ export const banner = style({
   width: '100%',
   display: 'flex',
   justifyContent: 'space-between',
+  alignItems: 'center',
   padding: '12px 32px',
   borderRadius: 8,
 });
@@ -34,12 +35,13 @@ export const bannerText = style({
 export const categoryContainer = style({
   display: 'flex',
   flexDirection: 'column',
-  width: 'max-content',
+  minWidth: 50,
+  maxWidth: 100,
 });
 
 export const reviewContainer = style({
   height: '100%',
-  maxHeight: 400,
+  maxHeight: 200,
   display: 'flex',
   flexDirection: 'column',
   gap: 12,

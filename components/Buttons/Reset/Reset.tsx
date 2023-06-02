@@ -2,7 +2,7 @@ import type { Dispatch, FC, SetStateAction } from 'react';
 import Image from 'next/image';
 import { ButtonOrder, Film } from '@/lib/types';
 import { useSearchContext } from '@/context/search';
-import ResetIcon from '../../lib/img/reset-icon.png';
+import ResetIcon from '../../../lib/img/reset-icon.png';
 import * as styles from './Reset.css';
 interface Props {
   films: Film[];

@@ -3,7 +3,7 @@ import { useSearch } from '@/lib/hooks/useSearch';
 import { useSort } from '@/lib/hooks/useSort';
 import Search from '../Search/Search';
 import Sort from '../Sort/Sort';
-import Reset from '../Reset/Reset';
+import Reset from '../Buttons/Reset/Reset';
 import { Film } from '@/lib/types';
 import { getRandomFilm } from '@/lib/functions';
 

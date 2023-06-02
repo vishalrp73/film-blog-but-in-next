@@ -11,12 +11,14 @@ interface Props {
   bannerText: string;
   selectedBannerImage: StaticImageData;
   movies: Film[];
+  topFive: Film[];
 }
 
 const HomeComponent: FC<Props> = ({
   bannerText,
   selectedBannerImage,
   movies,
+  topFive,
 }) => {
   const { films } = useFilms(movies);
   return (
@@ -27,7 +29,7 @@ const HomeComponent: FC<Props> = ({
           bannerText={bannerText}
           selectedBannerImage={selectedBannerImage}
         />
-        <FilmGrid films={films ?? []} />
+        <FilmGrid films={films ?? []} topFive={topFive} />
       </div>
     </SearchProvider>
   );

@@ -1,4 +1,4 @@
-import { getFilms } from '@/lib/fetch';
+import { getFilms, getTopFive } from '@/lib/fetch';
 import { Film } from '@/lib/types';
 import HomeComponent from '@/components/Home/Home';
 import * as styles from './page.css';
@@ -7,8 +7,11 @@ import { getHeaderContent } from '@/components/Header/getHeaderContent';
 
 export default async function Home() {
   const data: Promise<Film[]> = getFilms();
+  const dataTopFive: Promise<Film[]> = getTopFive();
   const films = await data;
+  const topFive = await dataTopFive;
   const randomisedFilms = randomiseFilms(films);
+  const randomisedTopFive = randomiseFilms(topFive);
   const { selectedBannerImage, bannerText } = getHeaderContent();
 
   return (
@@ -17,6 +20,7 @@ export default async function Home() {
         bannerText={bannerText}
         selectedBannerImage={selectedBannerImage}
         movies={randomisedFilms ?? []}
+        topFive={randomisedTopFive ?? []}
       />
     </main>
   );

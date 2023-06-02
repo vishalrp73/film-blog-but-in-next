@@ -3,7 +3,7 @@ import { translucent } from '@/styles/translucent.css';
 
 export const container = style({
   backgroundColor: translucent,
-  padding: 16,
+  padding: 24,
   maxHeight: 200,
   borderRadius: 12,
   overflow: 'scroll',

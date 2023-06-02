@@ -3,7 +3,6 @@ import PanelContainer from './PanelContainer';
 import Module from './Module';
 
 interface Props {
-  blurb: string;
   notable_actors: string[];
   genre: string[];
   writers: string[];
@@ -12,7 +11,6 @@ interface Props {
 }
 
 const InfoPanel: FC<Props> = ({
-  blurb,
   notable_actors,
   genre,
   writers,
@@ -21,7 +19,6 @@ const InfoPanel: FC<Props> = ({
 }) => {
   return (
     <PanelContainer>
-      <Module heading="blurb" content={blurb} />
       <Module heading="actors" content={notable_actors} />
       <Module heading="genres" content={genre} />
       <Module heading="writers" content={writers} />

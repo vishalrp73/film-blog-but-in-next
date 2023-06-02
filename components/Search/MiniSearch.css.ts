@@ -1,10 +1,9 @@
 import { style } from '@vanilla-extract/css';
 
 export const superMaxContainer /*ᵀᴹ*/ = style({
-  width: '50%',
+  width: '100%',
   display: 'flex',
   flexDirection: 'row-reverse',
-  position: 'absolute',
   top: 16,
   right: 24,
   backgroundSize: 'cover',
@@ -14,7 +13,7 @@ export const superMaxContainer /*ᵀᴹ*/ = style({
 });
 
 export const miniContainer = style({
-  width: '50%',
+  width: '100%',
   display: 'flex',
   height: '80%',
   flexDirection: 'column',
@@ -23,7 +22,7 @@ export const miniContainer = style({
 
 export const searchContainer = style({
   display: 'flex',
-  gap: 4,
+  gap: 8,
   alignItems: 'center',
 });
 
@@ -32,6 +31,7 @@ export const resetBtn = style({
   cursor: 'pointer',
   border: '2px ridge rgb(200, 200, 200)',
   borderRadius: 5,
+  width: 54,
   height: 42,
 });
 
@@ -58,7 +58,6 @@ export const openSearchBtn = style({
   width: 45,
   height: 45,
   borderRadius: 12,
-  position: 'absolute',
   right: 24,
   cursor: 'pointer',
   border: '1px ridge rgb(250, 0, 126)',

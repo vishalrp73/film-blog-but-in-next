@@ -5,6 +5,7 @@ import CoolPanel from './CoolPanel';
 import InfoPanel from './InfoPanel';
 import * as styles from './SidebarPanel.css';
 import { Film } from '@/lib/types';
+import clsx from 'clsx';
 
 type PanelTypes = 'COOL' | 'INFO';
 
@@ -37,7 +38,9 @@ const SidebarPanel: FC<Props> = ({ film, randomTrivia }) => {
           <button
             type="button"
             onClick={() => setType(panel.type)}
-            className={styles.panelBtn}
+            className={clsx(styles.panelBtn, {
+              [styles.active]: type === panel.type,
+            })}
           >
             {panel.type}
           </button>
@@ -48,6 +51,7 @@ const SidebarPanel: FC<Props> = ({ film, randomTrivia }) => {
           <CoolPanel
             year={year}
             randomTrivia={randomTrivia}
+            blurb={blurb}
             review_score={review_score}
             comments={comments}
           />
@@ -59,7 +63,6 @@ const SidebarPanel: FC<Props> = ({ film, randomTrivia }) => {
             cinematography={cinematography}
             soundtrack={soundtrack}
             notable_actors={notable_actors}
-            blurb={blurb}
           />
         )}
       </div>

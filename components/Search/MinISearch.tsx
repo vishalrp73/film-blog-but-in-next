@@ -50,13 +50,6 @@ const MiniSearch: FC<SearchProps> = ({ films, toggle, setToggle }) => {
       >
         <div className={styles.miniContainer}>
           <div className={styles.searchContainer}>
-            <button
-              className={styles.resetBtn}
-              type="button"
-              onClick={handleReset}
-            >
-              <Image src={ResetIcon} alt="reset" width={16} height={16} />
-            </button>
             <input
               autoFocus
               className={clsx(styles.input, {
@@ -66,6 +59,13 @@ const MiniSearch: FC<SearchProps> = ({ films, toggle, setToggle }) => {
               value={searchTerm}
               onChange={(e) => setSearchTerm(e.target.value)}
             />
+            <button
+              className={styles.resetBtn}
+              type="button"
+              onClick={handleReset}
+            >
+              <Image src={ResetIcon} alt="reset" width={16} height={16} />
+            </button>
           </div>
           <div className={styles.functionalGroup}>
             {searchTerm !== '' && (

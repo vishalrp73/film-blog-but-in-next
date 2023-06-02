@@ -8,6 +8,7 @@ import { getRandomNumber } from '@/lib/functions';
 interface Props {
   year: number;
   review_score: number | null;
+  blurb: string;
   randomTrivia: string;
   comments: Comment[];
 }
@@ -15,6 +16,7 @@ interface Props {
 const CoolPanel: FC<Props> = ({
   year,
   review_score,
+  blurb,
   randomTrivia,
   comments,
 }) => {
@@ -28,7 +30,7 @@ const CoolPanel: FC<Props> = ({
           <h5 className={styles.score}>{review_score}</h5>
         </div>
       </div>
-
+      <Module heading="blurb" content={blurb} />
       <Module heading="trivia" content={randomTrivia} />
     </PanelContainer>
   );

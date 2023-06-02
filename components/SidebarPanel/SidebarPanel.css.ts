@@ -11,6 +11,7 @@ export const navBar = style({
   justifyContent: 'space-evenly',
   height: 45,
   width: '100%',
+  gap: 8,
 });
 
 export const panelBtn = style({
@@ -18,4 +19,17 @@ export const panelBtn = style({
   display: 'flex',
   alignItems: 'center',
   justifyContent: 'center',
+  backgroundColor: '#000',
+  color: '#FFF',
+  borderRadius: 8,
+  border: 'none',
+  cursor: 'pointer',
+  fontStyle: 'italic',
+});
+
+export const active = style({
+  backgroundColor: 'pink',
+  color: 'orangered',
+  fontWeight: 'bold',
+  fontStyle: 'normal',
 });
