@@ -1,5 +1,5 @@
-import HeaderMenu from '@/components/FilmDetails/HeaderMenu';
 import MainContent from '@/components/FilmDetails/MainContent';
+import FixedHeader from '@/components/FixedHeader/FixedHeader';
 import SidebarPanel from '@/components/SidebarPanel/SidebarPanel';
 import { getFilm, getFilms } from '@/lib/fetch';
 import { getRandomNumber, randomiseFilms } from '@/lib/functions';
@@ -30,12 +30,7 @@ export default async function Film({ params: { filmId } }: Params) {
       className={styles.wrapper}
       style={{ backgroundImage: `url(${bgImage})` }}
     >
-      <div className={styles.fixedHeaderContainer}>
-        <h2 className={styles.headingTitle}>{film.title}</h2>
-        <div className={styles.miniSearchContainer}>
-          <HeaderMenu films={randomisedFilms} />
-        </div>
-      </div>
+      <FixedHeader films={randomisedFilms} title={film.title} />
       <div className={styles.container}>
         <SidebarPanel film={film} randomTrivia={randomTrivia} />
         <MainContent film={film} />

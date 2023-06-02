@@ -27,7 +27,11 @@ const HamburgerMenu: FC = () => {
       {toggle && (
         <div className={styles.menuDropdown}>
           {routes.map((route) => (
-            <Link href={route.route} className={styles.menuLink}>
+            <Link
+              key={route.route}
+              href={route.route}
+              className={styles.menuLink}
+            >
               <div className={styles.menuItem}>
                 <h5 className={styles.menuText}>{route.title}</h5>
               </div>

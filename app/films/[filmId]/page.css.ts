@@ -5,18 +5,6 @@ export const wrapper = style({
   backgroundSize: 'cover',
 });
 
-export const fixedHeaderContainer = style({
-  position: 'fixed',
-  zIndex: 50,
-  top: 26,
-  left: 120,
-  display: 'flex',
-});
-
-export const headingTitle = style({
-  color: 'white',
-});
-
 export const container = style({
   width: '100%',
   display: 'flex',
@@ -24,11 +12,4 @@ export const container = style({
   paddingLeft: 24,
   paddingRight: 24,
   gap: 24,
-});
-
-export const miniSearchContainer = style({
-  position: 'fixed',
-  top: 24,
-  right: 24,
-  zIndex: 50,
 });

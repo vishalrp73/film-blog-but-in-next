@@ -30,11 +30,12 @@ const Dropdown: FC<Props> = ({ setPopup, setHighlightedFilm }) => {
         {searchedFilms &&
           searchedFilms.map((film) => (
             <div
+              key={film.film_id}
               onMouseOver={() => handleMouseOver(film)}
               onMouseOut={handleMouseOut}
             >
-              <Link href={`/films/${film.film_id}`}>
-                <div className={styles.filmPanel}>
+              <Link key={film.film_id} href={`/films/${film.film_id}`}>
+                <div key={film.film_id} className={styles.filmPanel}>
                   <h3>{film.title}</h3>
                   <p>{film.year}</p>
                 </div>

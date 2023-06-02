@@ -36,6 +36,7 @@ const SidebarPanel: FC<Props> = ({ film, randomTrivia }) => {
       <div className={styles.navBar}>
         {panels.map((panel) => (
           <button
+            key={panel.type}
             type="button"
             onClick={() => setType(panel.type)}
             className={clsx(styles.panelBtn, {

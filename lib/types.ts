@@ -34,3 +34,5 @@ export interface Film {
 export type ButtonType = 'year' | 'alpha' | 'random';
 
 export type ButtonOrder = 'asc' | 'desc' | null;
+
+export type Categories = 'genres' | 'categories' | 'artists';

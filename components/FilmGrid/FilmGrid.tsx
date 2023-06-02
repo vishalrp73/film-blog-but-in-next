@@ -15,9 +15,6 @@ const FilmGrid: FC<{ films?: Film[]; topFive?: Film[] }> = ({
   if (searchedFilms.length > 0) {
     return (
       <div className={clsx(styles.container, styles.searchGridContainer)}>
-        {/* {searchedFilms.map((film) => (
-          <FilmTile id={film.film_id} thumbnail={film.thumbnail} />
-        ))} */}
         <Pagination films={searchedFilms} />
       </div>
     );

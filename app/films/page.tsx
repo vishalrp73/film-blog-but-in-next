@@ -1,7 +1,8 @@
-import type { Metadata } from 'next';
-import { Film } from '@/lib/types';
+import FilmsCategory from '@/components/CategoryPage/FilmsCategory';
 import { getFilms } from '@/lib/fetch';
-import Link from 'next/link';
+import { randomiseFilms } from '@/lib/functions';
+import { Film } from '@/lib/types';
+import type { Metadata } from 'next';
 
 export const metadata: Metadata = {
   title: 'films',
@@ -11,21 +12,5 @@ export default async function Page() {
   const data: Promise<Film[]> = getFilms();
   const films = await data;
 
-  const content = (
-    <section>
-      <h2>
-        <Link href="/">Back to Home</Link>
-      </h2>
-      <br />
-      {films.map((film) => (
-        <div>
-          <h5>
-            <Link href={`/films/${film.film_id}`}>{film.title}</Link>
-          </h5>
-        </div>
-      ))}
-    </section>
-  );
-
-  return content;
+  return <FilmsCategory films={randomiseFilms(films)} title="ALL MOVIES" />;
 }

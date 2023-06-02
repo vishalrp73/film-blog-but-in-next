@@ -1,28 +1,25 @@
+import CategoryPage from '@/components/CategoryPage/CategoryPage';
+import { getFilms, getGenres } from '@/lib/fetch';
+import { randomiseStrings } from '@/lib/functions';
+import { Film } from '@/lib/types';
 import type { Metadata } from 'next';
-import Link from 'next/link';
-import { getGenres } from '@/lib/fetch';
 
 export const metadata: Metadata = {
-  title: 'genres',
+  title: 'Genres',
 };
 
 export default async function Page() {
   const data: Promise<string[]> = getGenres();
+  const filmsData: Promise<Film[]> = getFilms();
   const genres = await data;
+  const films = await filmsData;
 
   return (
-    <section>
-      <h2>
-        <Link href="/">Back to Home</Link>
-      </h2>
-      <br />
-      {genres.map((genre) => (
-        <div>
-          <h5>
-            <Link href={`/genres/${genre}`}>{genre}</Link>
-          </h5>
-        </div>
-      ))}
-    </section>
+    <CategoryPage
+      films={films}
+      categories={randomiseStrings(genres)}
+      route="genres"
+      headerTitle="GENRES"
+    />
   );
 }

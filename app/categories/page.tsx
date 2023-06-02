@@ -1,6 +1,8 @@
-import { getCategories } from '@/lib/fetch';
+import CategoryPage from '@/components/CategoryPage/CategoryPage';
+import { getCategories, getFilms } from '@/lib/fetch';
+import { randomiseStrings } from '@/lib/functions';
+import { Film } from '@/lib/types';
 import type { Metadata } from 'next';
-import Link from 'next/link';
 
 export const metadata: Metadata = {
   title: 'categories',
@@ -8,23 +10,16 @@ export const metadata: Metadata = {
 
 export default async function Page() {
   const data: Promise<string[]> = getCategories();
+  const filmsData: Promise<Film[]> = getFilms();
   const categories = await data;
+  const films = await filmsData;
 
-  const content = (
-    <section>
-      <h2>
-        <Link href="/">Back to Home</Link>
-      </h2>
-      <br />
-      {categories.map((category) => (
-        <div>
-          <h5>
-            <Link href={`/categories/${category}`}>{category}</Link>
-          </h5>
-        </div>
-      ))}
-    </section>
+  return (
+    <CategoryPage
+      films={films}
+      categories={randomiseStrings(categories)}
+      route="categories"
+      headerTitle="CATEGORIES"
+    />
   );
-
-  return content;
 }

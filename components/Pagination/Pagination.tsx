@@ -1,3 +1,5 @@
+'use client';
+
 import type { FC, Dispatch, SetStateAction } from 'react';
 import { useEffect, useState } from 'react';
 import clsx from 'clsx';

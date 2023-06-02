@@ -14,7 +14,7 @@ const ContentMap: FC<ContentProps> = ({ contentArray, heading }) => {
     return (
       <>
         {contentArray.map((content) => (
-          <ContentLink route="genres" content={content} />
+          <ContentLink key={content} route="genres" content={content} />
         ))}
       </>
     );
@@ -23,7 +23,7 @@ const ContentMap: FC<ContentProps> = ({ contentArray, heading }) => {
   return (
     <>
       {contentArray.map((content) => (
-        <ContentLink route="artists" content={content} />
+        <ContentLink key={content} route="artists" content={content} />
       ))}
     </>
   );

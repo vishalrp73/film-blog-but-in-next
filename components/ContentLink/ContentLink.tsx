@@ -1,10 +1,11 @@
 import type { FC } from 'react';
 import clsx from 'clsx';
 import Link from 'next/link';
+import { Categories } from '@/lib/types';
 import * as styles from './ContentLink.css';
 
 interface Props {
-  route: 'artists' | 'genres' | 'categories';
+  route: Categories;
   content: string;
 }
 

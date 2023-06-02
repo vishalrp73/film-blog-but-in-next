@@ -1,5 +1,20 @@
 import { style } from '@vanilla-extract/css';
 
+export const fixedHeaderContainer = style({
+  position: 'fixed',
+  zIndex: 50,
+  display: 'flex',
+  top: 24,
+  left: 24,
+});
+
+export const miniSearchContainer = style({
+  position: 'fixed',
+  top: 24,
+  right: 24,
+  zIndex: 50,
+});
+
 export const headerContainer = style({
   position: 'fixed',
   top: 0,
@@ -7,7 +22,6 @@ export const headerContainer = style({
   width: '100%',
   height: 80,
   display: 'flex',
-  alignItems: 'center',
   color: 'rgb(255, 0, 162)',
 });
 

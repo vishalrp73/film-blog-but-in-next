@@ -10,6 +10,16 @@ export const randomiseFilms = (films: Film[]): Film[] => {
   return films;
 };
 
+export const randomiseStrings = (strings: string[]): string[] => {
+  for (let i = strings.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    const temp = strings[i];
+    strings[i] = strings[j];
+    strings[j] = temp;
+  }
+  return strings;
+};
+
 export const getRandomNumber = (length: number): number => {
   const randomNumber = Math.random() * length;
   return Math.floor(randomNumber);

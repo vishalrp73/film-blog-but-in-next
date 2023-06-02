@@ -1,5 +1,6 @@
 import { Film } from '@/lib/types';
 import { getArtist } from '@/lib/fetch';
+import FilmsCategory from '@/components/CategoryPage/FilmsCategory';
 
 type Params = {
   params: {
@@ -11,12 +12,5 @@ export default async function Artist({ params: { artist } }: Params) {
   const data: Promise<Film[]> = getArtist(artist);
   const films = await Promise.resolve(data);
 
-  return (
-    <>
-      <h1 style={{ color: 'white' }}>{artist}</h1>
-      {films.map((film) => (
-        <h4 style={{ color: 'white' }}>{film.title}</h4>
-      ))}
-    </>
-  );
+  return <FilmsCategory films={films} title={artist} />;
 }
