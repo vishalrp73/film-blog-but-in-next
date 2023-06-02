@@ -7,6 +7,7 @@ import CrossIcon from '../../lib/img/cross.svg';
 import * as styles from './HamburgerMenu.css';
 
 const routes: { title: string; route: string }[] = [
+  { title: 'Films', route: '/films' },
   { title: 'Genres', route: '/genres' },
   { title: 'Categories', route: '/categories' },
   { title: 'Artists', route: '/artists' },

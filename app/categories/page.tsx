@@ -5,7 +5,7 @@ import { Film } from '@/lib/types';
 import type { Metadata } from 'next';
 
 export const metadata: Metadata = {
-  title: 'categories',
+  title: 'Categories',
 };
 
 export default async function Page() {
