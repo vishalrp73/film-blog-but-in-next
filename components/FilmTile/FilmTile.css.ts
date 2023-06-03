@@ -22,6 +22,11 @@ export const popupContainer = style({
   borderRadius: 12,
   color: 'white',
   backgroundSize: 'cover',
+  '@media': {
+    'screen and (max-width: 768px)': {
+      display: 'none',
+    },
+  },
 });
 
 export const popupContentContainer = style({

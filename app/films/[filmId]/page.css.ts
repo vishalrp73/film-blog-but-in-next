@@ -9,7 +9,7 @@ export const container = style({
   width: '100%',
   display: 'flex',
   paddingTop: 120,
-  paddingLeft: 24,
-  paddingRight: 24,
+  paddingLeft: 120,
+  paddingRight: 120,
   gap: 24,
 });

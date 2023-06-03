@@ -15,6 +15,7 @@ import {
   Shudder,
   TVNZ,
 } from '@/lib/img/streaming-icons';
+import Pilates from '../Pilates/Pilates';
 import Loading from '../Loading/Loading';
 import { translucent } from '@/styles/translucent.css';
 import * as styles from './StreamingOptions.css';
@@ -97,6 +98,7 @@ const StreamingOptions: FC<{ id: number }> = ({ id }) => {
     return (
       <Container>
         <h1>OH NO! THIS IS UNAVAILABLE TO STREAM IN {country} 😡</h1>
+        <Pilates />
       </Container>
     );
   }
