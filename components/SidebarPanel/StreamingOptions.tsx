@@ -106,7 +106,7 @@ const StreamingOptions: FC<{ id: number }> = ({ id }) => {
       <h3 style={{ color: 'white' }}>Available in {country} on ...</h3>
       <div className={styles.iconContainer}>
         {options.map((opt) => (
-          <div className={styles.optionContainer}>
+          <div key={opt.key} className={styles.optionContainer}>
             <Image
               className={styles.icon}
               key={opt.key}

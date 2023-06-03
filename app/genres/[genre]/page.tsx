@@ -1,5 +1,5 @@
 import FilmsCategory from '@/components/CategoryPage/FilmsCategory';
-import { getGenre } from '@/lib/fetch';
+import { getFilms, getGenre } from '@/lib/fetch';
 import { Film } from '@/lib/types';
 
 type Params = {
@@ -11,6 +11,8 @@ type Params = {
 export default async function Page({ params: { genre } }: Params) {
   const data: Promise<Film[]> = getGenre(genre);
   const films = await Promise.resolve(data);
+  const filmsData: Promise<Film[]> = getFilms();
+  const movies = await Promise.resolve(filmsData);
 
-  return <FilmsCategory films={films} title={genre} />;
+  return <FilmsCategory allFilms={movies} films={films} title={genre} />;
 }
