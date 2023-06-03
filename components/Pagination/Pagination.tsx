@@ -101,9 +101,7 @@ const Pagination: FC<{ films: Film[] }> = ({ films }) => {
         </div>
       </div>
       <div className={styles.gridContainer}>
-        {selectedFilms.map((film) => (
-          <FilmTile film={film} />
-        ))}
+        {selectedFilms && selectedFilms.map((film) => <FilmTile film={film} />)}
       </div>
       <div className={clsx(styles.menuContainer, styles.centredButtons)}>
         <PageButtons
