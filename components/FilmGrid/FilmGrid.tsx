@@ -28,11 +28,7 @@ const FilmGrid: FC<{ films?: Film[]; topFive?: Film[] }> = ({
             <h1 className={styles.title}>TOP 5</h1>
             <div className={styles.container}>
               {topFive.map((film) => (
-                <FilmTile
-                  key={film.film_id}
-                  id={film.film_id}
-                  thumbnail={film.thumbnail}
-                />
+                <FilmTile film={film} />
               ))}
             </div>
           </>

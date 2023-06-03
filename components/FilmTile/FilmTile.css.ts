@@ -13,3 +13,34 @@ export const panelContainer = style({
     zoom: '1.05',
   },
 });
+
+export const popupContainer = style({
+  position: 'absolute',
+  zIndex: 50,
+  width: 250,
+  marginBottom: 275,
+  borderRadius: 12,
+  color: 'white',
+  backgroundSize: 'cover',
+});
+
+export const popupContentContainer = style({
+  display: 'flex',
+  padding: 16,
+  flexDirection: 'column',
+  gap: 12,
+  borderRadius: 12,
+  justifyContent: 'center',
+  alignItems: 'center',
+  textAlign: 'justify',
+  width: '100%',
+  height: 'fit-content',
+});
+
+export const title = style({
+  textAlign: 'center',
+});
+
+export const blurb = style({
+  textAlign: 'justify',
+});

@@ -102,11 +102,7 @@ const Pagination: FC<{ films: Film[] }> = ({ films }) => {
       </div>
       <div className={styles.gridContainer}>
         {selectedFilms.map((film) => (
-          <FilmTile
-            key={film.film_id}
-            id={film.film_id}
-            thumbnail={film.thumbnail}
-          />
+          <FilmTile film={film} />
         ))}
       </div>
       <div className={clsx(styles.menuContainer, styles.centredButtons)}>
