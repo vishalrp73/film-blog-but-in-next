@@ -1,8 +1,10 @@
-import type { FC } from 'react';
-import HeaderMenu from '../FilmDetails/HeaderMenu';
-import Back from '../Buttons/Back/Back';
-import * as styles from './FixedHeader.css';
 import { Film } from '@/lib/types';
+import { translucent } from '@/styles/translucent.css';
+import clsx from 'clsx';
+import type { FC } from 'react';
+import Back from '../Buttons/Back/Back';
+import HeaderMenu from '../FilmDetails/HeaderMenu';
+import * as styles from './FixedHeader.css';
 
 interface Props {
   films: Film[];
@@ -11,7 +13,7 @@ interface Props {
 
 const FixedHeader: FC<Props> = ({ films, title }) => {
   return (
-    <div className={styles.headerContainer}>
+    <div className={clsx(styles.headerContainer, translucent)}>
       <div className={styles.fixedHeaderContainer}>
         <Back />
         {title && <h2 className={styles.title}>{title}</h2>}

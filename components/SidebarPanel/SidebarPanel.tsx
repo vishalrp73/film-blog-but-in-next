@@ -20,7 +20,6 @@ const SidebarPanel: FC<Props> = ({ film, randomTrivia }) => {
   const [type, setType] = useState<PanelTypes>('COOL');
   const {
     year,
-    trivia,
     review_score,
     comments,
     genre,
@@ -29,6 +28,7 @@ const SidebarPanel: FC<Props> = ({ film, randomTrivia }) => {
     soundtrack,
     notable_actors,
     blurb,
+    justWatchId,
   } = film;
 
   return (
@@ -55,6 +55,7 @@ const SidebarPanel: FC<Props> = ({ film, randomTrivia }) => {
             blurb={blurb}
             review_score={review_score}
             comments={comments}
+            justWatchId={justWatchId}
           />
         )}
         {type === 'INFO' && (

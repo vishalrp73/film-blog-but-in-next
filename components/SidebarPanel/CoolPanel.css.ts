@@ -35,5 +35,5 @@ export const scoreContainer = style({
 
 export const score = style({
   color: 'white',
-  fontSize: 40,
+  fontSize: 32,
 });

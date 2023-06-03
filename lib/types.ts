@@ -10,6 +10,7 @@ export interface Comment {
 export interface Film {
   title: string;
   film_id: number;
+  justWatchId: number;
   director: string;
   year: number;
   runtime: string;

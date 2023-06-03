@@ -1,9 +1,10 @@
-import type { FC } from 'react';
-import PanelContainer from './PanelContainer';
 import { Comment } from '@/lib/types';
-import Module from './Module';
+import type { FC } from 'react';
+import Comments from '../Comments/Comments';
+import StreamingOptions from './StreamingOptions';
 import * as styles from './CoolPanel.css';
-import { getRandomNumber } from '@/lib/functions';
+import Module from './Module';
+import PanelContainer from './PanelContainer';
 
 interface Props {
   year: number;
@@ -11,6 +12,7 @@ interface Props {
   blurb: string;
   randomTrivia: string;
   comments: Comment[];
+  justWatchId: number;
 }
 
 const CoolPanel: FC<Props> = ({
@@ -19,6 +21,7 @@ const CoolPanel: FC<Props> = ({
   blurb,
   randomTrivia,
   comments,
+  justWatchId,
 }) => {
   return (
     <PanelContainer>
@@ -32,6 +35,8 @@ const CoolPanel: FC<Props> = ({
       </div>
       <Module heading="blurb" content={blurb} />
       <Module heading="trivia" content={randomTrivia} />
+      {/* <Comments comments={comments} /> */}
+      <StreamingOptions id={justWatchId} />
     </PanelContainer>
   );
 };

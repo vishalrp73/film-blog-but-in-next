@@ -1,8 +1,8 @@
 import type { FC } from 'react';
 import clsx from 'clsx';
 import { ContentLink } from '../ContentLink/ContentLink';
-import * as styles from './Module.css';
 import { translucent } from '@/styles/translucent.css';
+import * as styles from './Module.css';
 
 interface ContentProps {
   contentArray: string[];

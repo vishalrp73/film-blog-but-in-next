@@ -22,7 +22,7 @@ export default async function Film({ params: { filmId } }: Params) {
   const randomTriviaNumber = getRandomNumber(trivia.length);
   const randomTrivia = trivia[randomTriviaNumber];
 
-  const randomBgImageNumber = getRandomNumber(trivia.length);
+  const randomBgImageNumber = getRandomNumber(img_bank.length);
   const bgImage = img_bank[randomBgImageNumber];
 
   return (

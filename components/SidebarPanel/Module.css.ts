@@ -1,8 +1,6 @@
 import { style } from '@vanilla-extract/css';
-import { translucent } from '@/styles/translucent.css';
 
 export const container = style({
-  backgroundColor: translucent,
   padding: 24,
   maxHeight: 200,
   borderRadius: 12,
