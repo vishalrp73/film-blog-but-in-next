@@ -1,49 +1,17 @@
 import type { FC, ReactNode } from 'react';
-import { useState, useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import clsx from 'clsx';
-import Image, { StaticImageData } from 'next/image';
+import Image from 'next/image';
 import { getStreamingOptions } from '@/lib/justwatch';
 import { locale } from '@/lib/justwatch/options';
-import { Offer, ProviderShortNames } from '@/lib/justwatch/types';
-import {
-  AppleTVPlus,
-  DisneyPlus,
-  Mubi,
-  Neon,
-  Netflix,
-  PrimeVideo,
-  Shudder,
-  TVNZ,
-} from '@/lib/img/streaming-icons';
-import Pilates from '../Pilates/Pilates';
-import Loading from '../Loading/Loading';
+import { Offer } from '@/lib/justwatch/types';
 import { translucent } from '@/styles/translucent.css';
+import Loading from '../Loading/Loading';
+import Pilates from '../Pilates/Pilates';
+import { Option, getOptions } from './StreamingOptionsMap';
 import * as styles from './StreamingOptions.css';
 
-const country = locale === 'en_NZ' ? 'NZ' : 'FOREIGNER LAND';
-
-type Option = { key: ProviderShortNames; name: string; image: StaticImageData };
-
-const optionsMap: Option[] = [
-  { key: 'nfx', name: 'Netflix', image: Netflix },
-  { key: 'prv', name: 'Prime Video', image: PrimeVideo },
-  { key: 'nev', name: 'Neon', image: Neon },
-  { key: 'dnp', name: 'Disney+', image: DisneyPlus },
-  { key: 'atp', name: 'Apple TV+', image: AppleTVPlus },
-  { key: 'mbi', name: 'MUBI', image: Mubi },
-  { key: 'tnz', name: 'TVNZ', image: TVNZ },
-  { key: 'shd', name: 'Shudder', image: Shudder },
-];
-
-const getOptions = (responses: Offer[]) => {
-  const short_names: ProviderShortNames[] = responses.map(
-    ({ package_short_name }) => package_short_name,
-  );
-  const matches: Option[] = optionsMap.filter((option) =>
-    short_names.includes(option.key),
-  );
-  return matches;
-};
+const COUNTRY = locale === 'en_NZ' ? 'NZ' : 'FOREIGNER LAND';
 
 const Container: FC<{ children: ReactNode }> = ({ children }) => {
   return <div className={clsx(styles.container, translucent)}>{children}</div>;
@@ -97,7 +65,7 @@ const StreamingOptions: FC<{ id: number }> = ({ id }) => {
   if (options === null) {
     return (
       <Container>
-        <h1>OH NO! THIS IS UNAVAILABLE TO STREAM IN {country} 😡</h1>
+        <h1>OH NO! THIS IS UNAVAILABLE TO STREAM IN {COUNTRY} 😡</h1>
         <Pilates />
       </Container>
     );
@@ -105,7 +73,7 @@ const StreamingOptions: FC<{ id: number }> = ({ id }) => {
 
   return (
     <Container>
-      <h3 style={{ color: 'white' }}>Available in {country} on ...</h3>
+      <h3 style={{ color: 'white' }}>Available in {COUNTRY} on ...</h3>
       <div className={styles.iconContainer}>
         {options.map((opt) => (
           <div key={opt.key} className={styles.optionContainer}>

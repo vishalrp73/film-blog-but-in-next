@@ -4,15 +4,9 @@ import type { FC, Dispatch, SetStateAction } from 'react';
 import { useEffect, useState } from 'react';
 import clsx from 'clsx';
 import { Film } from '@/lib/types';
+import { sliceFilms } from '@/lib/functions/slice';
 import FilmTile from '../FilmTile/FilmTile';
 import * as styles from './Pagination.css';
-
-const sliceFilms = (films: Film[], splitSize: number) => {
-  const numberOfPages = Math.ceil(films.length / splitSize);
-  return Array.from({ length: numberOfPages }, (v, index) =>
-    films.slice(index * splitSize, index * splitSize + splitSize),
-  );
-};
 
 interface PageBtn {
   slicedFilms: Film[][];

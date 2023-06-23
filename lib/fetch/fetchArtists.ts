@@ -5,7 +5,7 @@ export const getArtists = async () => {
 };
 
 export const getArtist = async (artist: string) => {
-  return await fetch(`http://localhost:4000/artist/${artist}`)
+  return await fetch(`http://localhost:4000/artists/${artist}`)
     .then((res) => res.json())
     .catch((err) => console.error('blyat', err));
 };

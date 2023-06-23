@@ -4,26 +4,28 @@ import { useSearchContext } from '@/context/search';
 import { Film } from '../types';
 import Fuse from 'fuse.js';
 
+const fuseKeys = [
+  'title',
+  'director',
+  'year',
+  'writers',
+  'genre',
+  'cinematography',
+  'soundtrack',
+  'blurb',
+  'tags',
+  'trivia',
+  'review_text',
+  'review_score',
+  'special_category',
+];
+
 export const useSearch = (films: Film[]) => {
   const [searchTerm, setSearchTerm] = useState<string>('');
   const { setSearchedFilms } = useSearchContext();
 
   const fuseSearch = new Fuse(films, {
-    keys: [
-      'title',
-      'director',
-      'year',
-      'writers',
-      'genre',
-      'cinematography',
-      'soundtrack',
-      'blurb',
-      'tags',
-      'trivia',
-      'review_text',
-      'review_score',
-      'special_category',
-    ],
+    keys: fuseKeys,
     includeScore: true,
     threshold: 0.3,
     ignoreLocation: true,

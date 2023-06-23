@@ -1,7 +1,6 @@
 'use client';
 import type { FC } from 'react';
 import { SearchProvider } from '@/context/search';
-import { useFilms } from '@/lib/hooks/useFilms';
 import { Film } from '@/lib/types';
 import Header from '../Header/Header';
 import FilmGrid from '../FilmGrid/FilmGrid';
@@ -20,16 +19,15 @@ const HomeComponent: FC<Props> = ({
   movies,
   topFive,
 }) => {
-  const { films } = useFilms(movies);
   return (
     <SearchProvider>
       <div style={{ display: 'flex', flexDirection: 'column' }}>
         <Header
-          films={films ?? []}
+          films={movies}
           bannerText={bannerText}
           selectedBannerImage={selectedBannerImage}
         />
-        <FilmGrid films={films ?? []} topFive={topFive} />
+        <FilmGrid films={movies} topFive={topFive} />
       </div>
     </SearchProvider>
   );
