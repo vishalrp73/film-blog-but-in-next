@@ -32,7 +32,10 @@ const Popup: FC<PopupProps> = ({ title, year, director, blurb, img_bank }) => {
   );
 };
 
-const FilmTile: FC<{ film: Film }> = ({ film }) => {
+const FilmTile: FC<{ film: Film; noAnimations?: boolean }> = ({
+  film,
+  noAnimations,
+}) => {
   const [showPopup, setShowPopup] = useState<boolean>(false);
   const { film_id, thumbnail, title, year, director, blurb, img_bank } = film;
 
@@ -44,9 +47,11 @@ const FilmTile: FC<{ film: Film }> = ({ film }) => {
     >
       <div
         style={{ backgroundImage: `url(${thumbnail})` }}
-        className={styles.panelContainer}
+        className={clsx(styles.panelContainer, {
+          [styles.noPopupHover]: noAnimations,
+        })}
       >
-        {showPopup && (
+        {showPopup && noAnimations !== true && (
           <Popup
             title={title}
             year={year}

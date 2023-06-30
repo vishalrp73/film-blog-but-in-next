@@ -2,9 +2,13 @@ import { style } from '@vanilla-extract/css';
 
 export const container = style({
   padding: 24,
-  maxHeight: 200,
   borderRadius: 12,
   overflow: 'scroll',
+});
+
+export const childrenContainer = style({
+  display: 'flex',
+  justifyContent: 'center',
 });
 
 export const heading = style({

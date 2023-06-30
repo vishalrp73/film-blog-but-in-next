@@ -6,6 +6,7 @@ import InfoPanel from './InfoPanel';
 import * as styles from './SidebarPanel.css';
 import { Film } from '@/lib/types';
 import clsx from 'clsx';
+import RelatedFilms from './RelatedFilms';
 
 type PanelTypes = 'COOL' | 'INFO';
 
@@ -19,6 +20,7 @@ interface Props {
 const SidebarPanel: FC<Props> = ({ film, randomTrivia }) => {
   const [type, setType] = useState<PanelTypes>('COOL');
   const {
+    title,
     year,
     review_score,
     comments,
@@ -67,6 +69,9 @@ const SidebarPanel: FC<Props> = ({ film, randomTrivia }) => {
             notable_actors={notable_actors}
           />
         )}
+        <div style={{ paddingTop: 16 }}>
+          <RelatedFilms title={title} />
+        </div>
       </div>
     </div>
   );

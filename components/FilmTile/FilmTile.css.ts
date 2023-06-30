@@ -14,6 +14,12 @@ export const panelContainer = style({
   },
 });
 
+export const noPopupHover = style({
+  ':hover': {
+    zoom: '0',
+  },
+});
+
 export const popupContainer = style({
   position: 'absolute',
   zIndex: 50,

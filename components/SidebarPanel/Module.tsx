@@ -1,8 +1,9 @@
-import type { FC } from 'react';
+import type { FC, ReactNode } from 'react';
 import clsx from 'clsx';
 import { ContentLink } from '../ContentLink/ContentLink';
 import { translucent } from '@/styles/translucent.css';
 import * as styles from './Module.css';
+import { CSSProperties } from '@vanilla-extract/css';
 
 interface ContentProps {
   contentArray: string[];
@@ -45,6 +46,26 @@ const Module: FC<Props> = ({ heading, content }) => {
           <p className={styles.contentText}>{content}</p>
         )}
       </div>
+    </div>
+  );
+};
+
+export const ChildrenModule: FC<{
+  children: ReactNode;
+  heading?: string;
+  className?: string;
+}> = ({ children, heading, className }) => {
+  return (
+    <div
+      className={clsx(
+        styles.container,
+        styles.childrenContainer,
+        translucent,
+        className,
+      )}
+    >
+      {heading && <h5 className={styles.heading}>{heading}</h5>}
+      {children}
     </div>
   );
 };

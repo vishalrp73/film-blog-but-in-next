@@ -1,3 +1,4 @@
+import { responsiveStyle } from '@/styles/responsiveStyles';
 import { style } from '@vanilla-extract/css';
 
 export const container = style({
@@ -40,8 +41,6 @@ export const categoryContainer = style({
 });
 
 export const reviewContainer = style({
-  height: '100%',
-  maxHeight: 200,
   display: 'flex',
   flexDirection: 'column',
   gap: 12,
@@ -59,4 +58,5 @@ export const reviewHeader = style({
 export const reviewText = style({
   color: 'white',
   textAlign: 'justify',
+  margin: '0 auto',
 });
