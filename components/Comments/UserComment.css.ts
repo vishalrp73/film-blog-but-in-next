@@ -34,6 +34,25 @@ export const userName = style({
   padding: 8,
 });
 
+export const detailsContainer = style({
+  display: 'flex',
+  gap: 12,
+});
+
+export const numWordsContainer = style({
+  width: 90,
+  backgroundColor: 'rgb(200, 200, 200)',
+  borderRadius: 8,
+  padding: 12,
+  textAlign: 'center',
+});
+
+export const numWordsText = style({
+  fontSize: 14,
+  color: 'black',
+  fontWeight: '900',
+});
+
 export const submitBtn = style({
   width: 90,
   height: 45,
@@ -42,9 +61,11 @@ export const submitBtn = style({
   border: 'none',
   cursor: 'pointer',
   fontWeight: 700,
-  ':hover': {
-    filter: 'brightness(0.5)',
-    color: 'white',
+  selectors: {
+    '&:hover::enabled': {
+      filter: 'brightness(0.5)',
+      color: 'white',
+    },
   },
 });
 

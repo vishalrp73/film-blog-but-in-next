@@ -1,11 +1,20 @@
-import type { Dispatch, FC, SetStateAction } from 'react';
-import { useState } from 'react';
-import { postComment, generateComment } from '@/lib/comments';
-import { Comment } from '@/lib/types';
-import * as styles from './UserComment.css';
+import {
+  type FC,
+  type Dispatch,
+  type SetStateAction,
+  useState,
+  useMemo,
+} from 'react';
 import clsx from 'clsx';
-import Display from './Display';
+import { Comment } from '@/lib/types';
+import { postComment, generateComment } from '@/lib/comments';
 import { timeout } from '@/lib/functions';
+import Display from './Display';
+import * as styles from './UserComment.css';
+
+const errorMessage =
+  'Unable to post your comment. Check your network connection';
+const successMessage = 'Successfully posted your comment';
 
 interface Props {
   filmId: number;
@@ -16,7 +25,20 @@ interface Props {
 const UserComment: FC<Props> = ({ filmId, comments, setComments }) => {
   const [userName, setUserName] = useState<string>('');
   const [comment, setComment] = useState<string>('');
+  const isRequiredEmpty = userName === '' || comment === '';
+  const [numInputWords, setNumInputWords] = useState<number>(0);
   const [hasPosted, setHasPosted] = useState<boolean | null>(null);
+
+  useMemo(() => {
+    if (comment === '') {
+      setNumInputWords(0);
+      return;
+    }
+    const numberOfWords = comment
+      .split(' ')
+      .filter((word) => word !== '').length;
+    setNumInputWords(numberOfWords);
+  }, [comment]);
 
   const handlePostComment = () => {
     const userComment: Comment = generateComment(comments, userName, comment);
@@ -28,29 +50,36 @@ const UserComment: FC<Props> = ({ filmId, comments, setComments }) => {
     <div className={styles.container}>
       <textarea
         className={styles.userInput}
-        placeholder="start typing ..."
+        placeholder="* start typing ..."
         onChange={(e) => setComment(e.target.value)}
       />
       <div className={styles.bottomRow}>
         <input
           type="text"
           className={styles.userName}
-          placeholder="name"
+          placeholder="* name"
           onChange={(e) => setUserName(e.target.value)}
         />
-        <button
-          type="button"
-          className={clsx(styles.submitBtn)}
-          onClick={handlePostComment}
-        >
-          submit
-        </button>
+
+        <div className={styles.detailsContainer}>
+          <div className={styles.numWordsContainer}>
+            <span className={styles.numWordsText}>{numInputWords} words</span>
+          </div>
+          <button
+            type="button"
+            className={clsx(styles.submitBtn)}
+            onClick={handlePostComment}
+            disabled={isRequiredEmpty}
+          >
+            submit
+          </button>
+        </div>
       </div>
       {hasPosted !== null && (
         <Display
           isBoolean={hasPosted}
-          errorMessage="Unable to post your comment. Check your network connection"
-          successMessage="Successfully posted your comment"
+          errorMessage={errorMessage}
+          successMessage={successMessage}
         />
       )}
     </div>
