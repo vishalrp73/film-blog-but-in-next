@@ -6,10 +6,6 @@ export const container = style({
   gap: 12,
 });
 
-export const maxHeight = style({
-  maxHeight: 600,
-});
-
 export const heading = style({
   color: 'white',
 });

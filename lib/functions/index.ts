@@ -5,3 +5,4 @@ export {
   getRandomFilm,
 } from './randomise';
 export { sortByYear, sortByAlpha } from './sort';
+export { timeout } from './timeout';

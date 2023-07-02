@@ -5,7 +5,7 @@ export const container = style({
   flexDirection: 'column',
   gap: 16,
   padding: 24,
-  maxHeight: 400,
+  maxHeight: 600,
   borderRadius: 12,
   overflow: 'scroll',
   color: 'white',
@@ -35,11 +35,6 @@ export const voteContainer = style({
   display: 'flex',
   flexDirection: 'column',
 });
-
-export const voteBtn = style({});
-
-export const upvote = style({});
-export const downvote = style({});
 
 export const commentTextContainer = style({
   paddingTop: 4,

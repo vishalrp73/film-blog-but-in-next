@@ -1,27 +1,24 @@
 'use client';
 import type { FC } from 'react';
 import { useState, useEffect } from 'react';
-import { searchRelatedFilms } from '@/lib/related/relatedFilms';
+import { Film } from '@/lib/types';
+import { getRelatedFilms } from '@/lib/fetch';
 import { ChildrenModule } from '../Module';
 import FilmTile from '@/components/FilmTile/FilmTile';
-import { Film } from '@/lib/types';
 import * as styles from './RelatedFilms.css';
 
-const RelatedFilms: FC<{ title: string }> = ({ title }) => {
+const RelatedFilms: FC<{ filmId: number }> = ({ filmId }) => {
   const [relatedFilms, setRelatedFilms] = useState<Film[] | null>(null);
 
   useEffect(() => {
-    searchRelatedFilms(title)
-      .then((r) => {
-        if (r === undefined) return;
-        setRelatedFilms(r);
-      })
+    getRelatedFilms(filmId)
+      .then((res) => setRelatedFilms(res))
       .catch((err) => console.error('blyat', err));
   }, []);
 
   if (relatedFilms) {
     return (
-      <ChildrenModule className={styles.maxHeight}>
+      <ChildrenModule>
         <div className={styles.container}>
           <h3 className={styles.heading}>Similar films</h3>
           {relatedFilms.map((film) => (

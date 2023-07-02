@@ -20,7 +20,7 @@ interface Props {
 const SidebarPanel: FC<Props> = ({ film, randomTrivia }) => {
   const [type, setType] = useState<PanelTypes>('COOL');
   const {
-    title,
+    film_id,
     year,
     review_score,
     comments,
@@ -56,7 +56,6 @@ const SidebarPanel: FC<Props> = ({ film, randomTrivia }) => {
             randomTrivia={randomTrivia}
             blurb={blurb}
             review_score={review_score}
-            comments={comments}
             justWatchId={justWatchId}
           />
         )}
@@ -70,7 +69,7 @@ const SidebarPanel: FC<Props> = ({ film, randomTrivia }) => {
           />
         )}
         <div style={{ paddingTop: 16 }}>
-          <RelatedFilms title={title} />
+          <RelatedFilms filmId={film_id} />
         </div>
       </div>
     </div>

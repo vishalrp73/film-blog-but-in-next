@@ -1,9 +1,10 @@
 import type { FC } from 'react';
+import clsx from 'clsx';
+import { Film } from '@/lib/types';
+import { translucent } from '@/styles/translucent.css';
+import Comments from '../Comments/Comments';
 import { ContentLink } from '../ContentLink/ContentLink';
 import * as styles from './MainContent.css';
-import { Film } from '@/lib/types';
-import clsx from 'clsx';
-import { translucent } from '@/styles/translucent.css';
 
 interface Props {
   film: Film;
@@ -11,12 +12,14 @@ interface Props {
 
 const MainContent: FC<Props> = ({ film }) => {
   const {
+    film_id,
     trailer,
     runtime,
     director,
     special_category,
     headline,
     review_text,
+    comments,
   } = film;
   return (
     <div className={styles.container}>
@@ -47,6 +50,7 @@ const MainContent: FC<Props> = ({ film }) => {
         <h3 className={styles.reviewHeader}>{headline}</h3>
         <p className={styles.reviewText}>{review_text}</p>
       </div>
+      <Comments comments={comments} filmId={film_id} />
     </div>
   );
 };

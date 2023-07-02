@@ -1,6 +1,5 @@
 import { Comment } from '@/lib/types';
 import type { FC } from 'react';
-import Comments from '../Comments/Comments';
 import StreamingOptions from './StreamingOptions';
 import * as styles from './CoolPanel.css';
 import Module from './Module';
@@ -11,7 +10,6 @@ interface Props {
   review_score: number | null;
   blurb: string;
   randomTrivia: string;
-  comments: Comment[];
   justWatchId: number;
 }
 
@@ -20,7 +18,6 @@ const CoolPanel: FC<Props> = ({
   review_score,
   blurb,
   randomTrivia,
-  comments,
   justWatchId,
 }) => {
   return (
@@ -35,7 +32,6 @@ const CoolPanel: FC<Props> = ({
       </div>
       <Module heading="blurb" content={blurb} />
       <Module heading="trivia" content={randomTrivia} />
-      {/* <Comments comments={comments} /> */}
       <StreamingOptions id={justWatchId} />
     </PanelContainer>
   );

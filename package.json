@@ -23,6 +23,7 @@
   "devDependencies": {
     "@vanilla-extract/next-plugin": "^2.1.2",
     "clsx": "^1.2.1",
+    "dayjs": "^1.11.9",
     "fuse.js": "^6.6.2"
   }
 }
