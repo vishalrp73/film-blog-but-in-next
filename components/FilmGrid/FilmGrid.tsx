@@ -30,7 +30,7 @@ const FilmGrid: FC<Props> = ({ films, topFive }) => {
             <h1 className={styles.title}>TOP 5</h1>
             <div className={styles.container}>
               {topFive.map((film) => (
-                <FilmTile film={film} />
+                <FilmTile film={film} key={film.film_id} />
               ))}
             </div>
           </>

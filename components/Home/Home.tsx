@@ -9,6 +9,7 @@ import { StaticImageData } from 'next/image';
 interface Props {
   bannerText: string;
   selectedBannerImage: StaticImageData;
+  placeholderTitle: string;
   movies: Film[];
   topFive: Film[];
 }
@@ -16,6 +17,7 @@ interface Props {
 const HomeComponent: FC<Props> = ({
   bannerText,
   selectedBannerImage,
+  placeholderTitle,
   movies,
   topFive,
 }) => {
@@ -26,6 +28,7 @@ const HomeComponent: FC<Props> = ({
           films={movies}
           bannerText={bannerText}
           selectedBannerImage={selectedBannerImage}
+          placeholderTitle={placeholderTitle}
         />
         <FilmGrid films={movies} topFive={topFive} />
       </div>

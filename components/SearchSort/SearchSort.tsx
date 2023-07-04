@@ -10,6 +10,7 @@ import * as styles from './SearchSort.css';
 interface Props {
   films: Film[];
   searchTerm: string;
+  placeholderTitle: string;
   setSearchTerm: Dispatch<SetStateAction<string>>;
   handleClear: () => void;
 }
@@ -17,12 +18,12 @@ interface Props {
 const SearchSort: FC<Props> = ({
   films,
   searchTerm,
+  placeholderTitle,
   setSearchTerm,
   handleClear,
 }) => {
   const { handleSort, yearOrder, setYearOrder, alphaOrder, setAlphaOrder } =
     useSort(films);
-  const { title: placeholderTitle } = getRandomFilm(films);
 
   return (
     <div>

@@ -1,4 +1,5 @@
-import { getRandomNumber } from '@/lib/functions';
+import { getRandomFilm, getRandomNumber } from '@/lib/functions';
+import { Film } from '@/lib/types';
 import { StaticImageData } from 'next/image';
 import julia from '../../lib/img/julia-fox.jpg';
 
@@ -15,11 +16,20 @@ const bannerTextRandomNumber: number = getRandomNumber(
   bannerTextOptions.length,
 );
 
-export const getHeaderContent = () => {
+type HeaderExports = {
+  selectedBannerImage: StaticImageData;
+  bannerText: string;
+  placeholderTitle: string;
+};
+
+export const getHeaderContent = (films: Film[]): HeaderExports => {
   const selectedBannerImage = backgroundImages[randomBackroundImageNumber];
   const bannerText: string = bannerTextOptions[bannerTextRandomNumber];
+  const randomFilm = getRandomFilm(films);
+  const { title } = randomFilm;
   return {
     selectedBannerImage,
     bannerText,
+    placeholderTitle: title,
   };
 };

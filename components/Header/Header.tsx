@@ -12,10 +12,16 @@ import SearchSort from '../SearchSort/SearchSort';
 interface Props {
   films: Film[];
   bannerText: string;
+  placeholderTitle: string;
   selectedBannerImage: StaticImageData;
 }
 
-const Header: FC<Props> = ({ films, selectedBannerImage, bannerText }) => {
+const Header: FC<Props> = ({
+  films,
+  bannerText,
+  placeholderTitle,
+  selectedBannerImage,
+}) => {
   const { searchTerm, setSearchTerm, handleClear } = useSearch(films);
   return (
     <div
@@ -49,6 +55,7 @@ const Header: FC<Props> = ({ films, selectedBannerImage, bannerText }) => {
           searchTerm={searchTerm}
           setSearchTerm={setSearchTerm}
           handleClear={handleClear}
+          placeholderTitle={placeholderTitle}
         />
       </div>
     </div>
