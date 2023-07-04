@@ -2,8 +2,8 @@ import type { FC, ReactNode } from 'react';
 import clsx from 'clsx';
 import { ContentLink } from '../ContentLink/ContentLink';
 import { translucent } from '@/styles/translucent.css';
+import { hideScrollbar } from '@/styles/scroll.css';
 import * as styles from './Module.css';
-import { CSSProperties } from '@vanilla-extract/css';
 
 interface ContentProps {
   contentArray: string[];
@@ -37,7 +37,7 @@ interface Props {
 
 const Module: FC<Props> = ({ heading, content }) => {
   return (
-    <div className={clsx(styles.container, translucent)}>
+    <div className={clsx(styles.container, translucent, hideScrollbar)}>
       <h5 className={styles.heading}>{heading}</h5>
       <div className={styles.contentContainer}>
         {Array.isArray(content) ? (
@@ -61,6 +61,7 @@ export const ChildrenModule: FC<{
         styles.container,
         styles.childrenContainer,
         translucent,
+        hideScrollbar,
         className,
       )}
     >

@@ -5,18 +5,12 @@ import { useSearchContext } from '@/context/search';
 import ResetIcon from '../../../lib/img/reset-icon.png';
 import * as styles from './Reset.css';
 interface Props {
-  films: Film[];
   handleClear: () => void;
   setYearOrder: Dispatch<SetStateAction<ButtonOrder>>;
   setAlphaOrder: Dispatch<SetStateAction<ButtonOrder>>;
 }
 
-const Reset: FC<Props> = ({
-  films,
-  handleClear,
-  setYearOrder,
-  setAlphaOrder,
-}) => {
+const Reset: FC<Props> = ({ handleClear, setYearOrder, setAlphaOrder }) => {
   const { setSearchedFilms } = useSearchContext();
 
   const handleReset = () => {

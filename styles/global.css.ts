@@ -1,4 +1,5 @@
 import { globalStyle, style } from '@vanilla-extract/css';
+import { hideScrollbar } from './scroll.css';
 
 globalStyle('*', {
   boxSizing: 'border-box',
@@ -10,14 +11,4 @@ globalStyle('html, body', {
   backgroundColor: 'rgb(10, 10, 10)',
 });
 
-export const all = style({
-  boxSizing: 'border-box',
-  margin: 0,
-  fontFamily: 'Arial, Helvetica, sans-serif',
-});
-
-export const htmlBody = style({
-  boxSizing: 'border-box',
-  margin: 0,
-  fontFamily: 'Arial, Helvetica, sans-serif',
-});
+export const all = style([hideScrollbar]);

@@ -1,7 +1,7 @@
+import type { Dispatch, FC, SetStateAction } from 'react';
+import { Film } from '@/lib/types';
 import { getRandomFilm } from '@/lib/functions';
 import { useSort } from '@/lib/hooks/useSort';
-import { Film } from '@/lib/types';
-import type { Dispatch, FC, SetStateAction } from 'react';
 import Reset from '../Buttons/Reset/Reset';
 import Search from '../Search/Search';
 import Sort from '../Sort/Sort';
@@ -22,14 +22,14 @@ const SearchSort: FC<Props> = ({
 }) => {
   const { handleSort, yearOrder, setYearOrder, alphaOrder, setAlphaOrder } =
     useSort(films);
-  const randomFilm = getRandomFilm(films);
+  const { title: placeholderTitle } = getRandomFilm(films);
 
   return (
     <div>
       <Search
         searchTerm={searchTerm}
         setSearchTerm={setSearchTerm}
-        randomFilm={randomFilm}
+        placeholderTitle={placeholderTitle}
       />
       <div className={styles.sortContainer}>
         <Sort
@@ -42,8 +42,12 @@ const SearchSort: FC<Props> = ({
           order={alphaOrder}
           handleSort={() => handleSort('alpha')}
         />
+        <Sort
+          type="random"
+          handleSort={() => handleSort('random')}
+          order={null}
+        />
         <Reset
-          films={films}
           handleClear={handleClear}
           setYearOrder={setYearOrder}
           setAlphaOrder={setAlphaOrder}

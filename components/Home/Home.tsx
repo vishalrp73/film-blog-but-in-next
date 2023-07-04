@@ -1,5 +1,5 @@
 'use client';
-import type { FC } from 'react';
+import { type FC } from 'react';
 import { SearchProvider } from '@/context/search';
 import { Film } from '@/lib/types';
 import Header from '../Header/Header';

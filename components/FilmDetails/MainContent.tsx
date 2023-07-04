@@ -1,9 +1,10 @@
 import type { FC } from 'react';
-import clsx from 'clsx';
 import { Film } from '@/lib/types';
-import { translucent } from '@/styles/translucent.css';
+import clsx from 'clsx';
 import Comments from '../Comments/Comments';
 import { ContentLink } from '../ContentLink/ContentLink';
+import { translucent } from '@/styles/translucent.css';
+import { hideScrollbar } from '@/styles/scroll.css';
 import * as styles from './MainContent.css';
 
 interface Props {
@@ -46,7 +47,7 @@ const MainContent: FC<Props> = ({ film }) => {
         </div>
       </div>
 
-      <div className={clsx(styles.reviewContainer, translucent)}>
+      <div className={clsx(styles.reviewContainer, translucent, hideScrollbar)}>
         <h3 className={styles.reviewHeader}>{headline}</h3>
         <p className={styles.reviewText}>{review_text}</p>
       </div>

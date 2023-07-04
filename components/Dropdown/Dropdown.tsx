@@ -1,10 +1,11 @@
 import type { Dispatch, FC, SetStateAction } from 'react';
+import { useSearchContext } from '@/context/search';
+import { Film } from '../../lib/types';
 import clsx from 'clsx';
 import Link from 'next/link';
-import * as styles from './Dropdown.css';
 import { highOpacityTranslucent } from '../../styles/translucent.css';
-import { Film } from '../../lib/types';
-import { useSearchContext } from '@/context/search';
+import { hideScrollbar } from '@/styles/scroll.css';
+import * as styles from './Dropdown.css';
 
 interface Props {
   setPopup: Dispatch<SetStateAction<boolean>>;
@@ -26,7 +27,13 @@ const Dropdown: FC<Props> = ({ setPopup, setHighlightedFilm }) => {
 
   return (
     <div className={styles.completeContainer}>
-      <div className={clsx(styles.container, highOpacityTranslucent)}>
+      <div
+        className={clsx(
+          styles.container,
+          highOpacityTranslucent,
+          hideScrollbar,
+        )}
+      >
         {searchedFilms &&
           searchedFilms.map((film) => (
             <div

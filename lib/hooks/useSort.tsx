@@ -48,6 +48,7 @@ export const useSort = (films: Film[]) => {
       case 'random':
         const randomFilm = getRandomFilm(films);
         setSearchedFilms([randomFilm]);
+        break;
       default:
         break;
     }

@@ -5,6 +5,7 @@ import Comment from './Comment';
 import { translucent } from '@/styles/translucent.css';
 import clsx from 'clsx';
 import UserComment from './UserComment';
+import { hideScrollbar } from '@/styles/scroll.css';
 import * as styles from './Comments.css';
 
 interface Props {
@@ -15,7 +16,7 @@ interface Props {
 const Comments: FC<Props> = ({ comments, filmId }) => {
   const [allComments, setAllComments] = useState<CommentType[]>(comments);
   return (
-    <div className={clsx(styles.container, translucent)}>
+    <div className={clsx(styles.container, translucent, hideScrollbar)}>
       <UserComment
         filmId={filmId}
         comments={comments}

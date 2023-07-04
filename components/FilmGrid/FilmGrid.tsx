@@ -6,10 +6,12 @@ import FilmTile from '../FilmTile/FilmTile';
 import * as styles from './FilmGrid.css';
 import clsx from 'clsx';
 
-const FilmGrid: FC<{ films?: Film[]; topFive?: Film[] }> = ({
-  films,
-  topFive,
-}) => {
+interface Props {
+  films?: Film[];
+  topFive?: Film[];
+}
+
+const FilmGrid: FC<Props> = ({ films, topFive }) => {
   const { searchedFilms } = useSearchContext();
 
   if (searchedFilms.length > 0) {
