@@ -2,7 +2,7 @@ import dayjs from 'dayjs';
 import { Comment } from '../types';
 
 // format: Sun 13 Dec, 16:04
-const DAYSJ_TIMESTAMP_FORMAT = 'ddd DD MMM @ HH:mm';
+const DAYSJ_TIMESTAMP_FORMAT = 'ddd DD MMM YYYY @ HH:mm';
 
 const generateCommentId = (comments: Comment[]): number => {
   if (comments.length === 0) return 1;

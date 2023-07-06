@@ -1,4 +1,4 @@
-import { useState, useEffect, type FC } from 'react';
+import { useState, type FC, useMemo } from 'react';
 import clsx from 'clsx';
 import { Comment as CommentType } from '@/lib/types';
 import { handleVote } from '@/lib/comments';
@@ -16,11 +16,11 @@ const Comment: FC<{ filmId: number; comment: CommentType }> = ({
   const [voteScore, setVoteScore] = useState<VoteScore>('neutral');
   const [successfulVote, setSuccessfulVote] = useState<boolean | null>(null);
 
-  useEffect(() => {
+  useMemo(() => {
     if (votes === 0) setVoteScore('neutral');
     if (votes < 0) setVoteScore('negative');
     if (votes > 0) setVoteScore('positive');
-  }, []);
+  }, [votes]);
 
   return (
     <div className={clsx(styles.container)}>

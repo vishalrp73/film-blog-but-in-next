@@ -37,3 +37,11 @@ export type ButtonType = 'year' | 'alpha' | 'random';
 export type ButtonOrder = 'asc' | 'desc' | null;
 
 export type Categories = 'genres' | 'categories' | 'artists';
+
+export type Artists = {
+  directors: string[];
+  writers: string[];
+  cinematographers: string[];
+  musicians: string[];
+  actors: string[];
+};
