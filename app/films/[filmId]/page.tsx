@@ -1,6 +1,8 @@
+import { Film } from '@/lib/types';
 import { getFilm, getFilms } from '@/lib/fetch';
 import { getRandomNumber, randomiseFilms } from '@/lib/functions';
-import { Film } from '@/lib/types';
+import { FixedHeader } from '@/components/Header';
+import { MainContent, Sidebar } from '@/components/FilmDetails';
 import * as styles from './page.css';
 
 type Params = {
@@ -22,5 +24,16 @@ export default async function Film({ params: { filmId } }: Params) {
   const randomBgImageNumber = getRandomNumber(img_bank.length);
   const bgImage = img_bank[randomBgImageNumber];
 
-  return <div></div>;
+  return (
+    <div
+      className={styles.wrapper}
+      style={{ backgroundImage: `url(${bgImage})` }}
+    >
+      <FixedHeader films={randomisedFilms} title={film.title} />
+      <div className={styles.container}>
+        <Sidebar film={film} randomTrivia={randomTrivia} />
+        <MainContent film={film} />
+      </div>
+    </div>
+  );
 }
