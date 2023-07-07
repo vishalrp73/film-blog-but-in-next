@@ -1,4 +1,3 @@
-import CategoryPage from '@/components/CategoryPage/CategoryPage';
 import { getFilms, getGenres } from '@/lib/fetch';
 import { randomiseStrings } from '@/lib/functions';
 import { Film } from '@/lib/types';
@@ -14,12 +13,5 @@ export default async function Page() {
   const genres = await data;
   const films = await filmsData;
 
-  return (
-    <CategoryPage
-      films={films}
-      categories={randomiseStrings(genres)}
-      route="genres"
-      headerTitle="GENRES"
-    />
-  );
+  return <></>;
 }

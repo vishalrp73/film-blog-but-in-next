@@ -1,6 +1,3 @@
-import MainContent from '@/components/FilmDetails/MainContent';
-import FixedHeader from '@/components/FixedHeader/FixedHeader';
-import SidebarPanel from '@/components/SidebarPanel/SidebarPanel';
 import { getFilm, getFilms } from '@/lib/fetch';
 import { getRandomNumber, randomiseFilms } from '@/lib/functions';
 import { Film } from '@/lib/types';
@@ -25,16 +22,5 @@ export default async function Film({ params: { filmId } }: Params) {
   const randomBgImageNumber = getRandomNumber(img_bank.length);
   const bgImage = img_bank[randomBgImageNumber];
 
-  return (
-    <div
-      className={styles.wrapper}
-      style={{ backgroundImage: `url(${bgImage})` }}
-    >
-      <FixedHeader films={randomisedFilms} title={film.title} />
-      <div className={styles.container}>
-        <SidebarPanel film={film} randomTrivia={randomTrivia} />
-        <MainContent film={film} />
-      </div>
-    </div>
-  );
+  return <div></div>;
 }
