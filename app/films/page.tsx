@@ -1,8 +1,8 @@
-import FilmsCategory from '@/components/CategoryPage/FilmsCategory';
+import type { Metadata } from 'next';
+import { Film } from '@/lib/types';
 import { getFilms } from '@/lib/fetch';
 import { randomiseFilms } from '@/lib/functions';
-import { Film } from '@/lib/types';
-import type { Metadata } from 'next';
+import { FilmsCategory } from '@/screens';
 
 export const metadata: Metadata = {
   title: 'Films',

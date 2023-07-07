@@ -1,9 +1,10 @@
-import type { Dispatch, FC, SetStateAction } from 'react';
-import Image from 'next/image';
-import { ButtonOrder, Film } from '@/lib/types';
+import { type FC, Dispatch, SetStateAction } from 'react';
 import { useSearchContext } from '@/context/search';
-import ResetIcon from '../../../lib/img/reset-icon.png';
+import { ButtonOrder } from '@/lib/types';
+import Image from 'next/image';
+import ResetIcon from '@/lib/img/reset-icon.png';
 import * as styles from './Reset.css';
+
 interface Props {
   handleClear: () => void;
   setYearOrder: Dispatch<SetStateAction<ButtonOrder>>;
@@ -13,7 +14,7 @@ interface Props {
 const Reset: FC<Props> = ({ handleClear, setYearOrder, setAlphaOrder }) => {
   const { setSearchedFilms } = useSearchContext();
 
-  const handleReset = () => {
+  const handleReset = (): void => {
     handleClear();
     setSearchedFilms([]);
     setYearOrder(null);

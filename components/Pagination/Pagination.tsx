@@ -1,83 +1,28 @@
 'use client';
-
-import type { FC, Dispatch, SetStateAction } from 'react';
-import { useEffect, useState } from 'react';
+import { useState, useMemo, type FC } from 'react';
 import clsx from 'clsx';
 import { Film } from '@/lib/types';
 import { sliceFilms } from '@/lib/functions/slice';
-import FilmTile from '../FilmTile/FilmTile';
+import FilmTile from '../FilmTile';
+import { AmountButton, PageButtons } from './Buttons';
 import * as styles from './Pagination.css';
 
-interface PageBtn {
-  slicedFilms: Film[][];
-  selectedFilms: Film[];
-  setSelectedFilms: Dispatch<SetStateAction<Film[]>>;
+interface Props {
+  films: Film[];
 }
 
-const PageButtons: FC<PageBtn> = ({
-  slicedFilms,
-  selectedFilms,
-  setSelectedFilms,
-}) => {
-  const handlePagination = (index: number) => {
-    setSelectedFilms(slicedFilms[index]);
-  };
-
-  return (
-    <div className={styles.filterButtons}>
-      {slicedFilms.map((f, idx) => (
-        <button
-          key={idx}
-          type="button"
-          value={idx}
-          onClick={() => handlePagination(idx)}
-          className={clsx(styles.filterBtn, {
-            [styles.activeBtn]: slicedFilms[idx] === selectedFilms,
-          })}
-        >
-          {idx + 1}
-        </button>
-      ))}
-    </div>
-  );
-};
-
-interface AmountBtn {
-  amountNum: number;
-  amount: number;
-  setAmount: Dispatch<SetStateAction<number>>;
-}
-
-const AmountButton: FC<AmountBtn> = ({ amountNum, amount, setAmount }) => {
-  return (
-    <button
-      type="button"
-      onClick={() => setAmount(amountNum)}
-      className={clsx(styles.filterBtn, {
-        [styles.activeBtn]: amountNum === amount,
-      })}
-    >
-      {amountNum}
-    </button>
-  );
-};
-
-const Pagination: FC<{ films: Film[] }> = ({ films }) => {
+const Pagination: FC<Props> = ({ films }) => {
   const [amount, setAmount] = useState<number>(20);
   const [slicedFilms, setSlicedFilms] = useState<Film[][]>(
     sliceFilms(films, amount),
   );
   const [selectedFilms, setSelectedFilms] = useState<Film[]>(slicedFilms[0]);
 
-  useEffect(() => {
+  useMemo(() => {
     setSlicedFilms(sliceFilms(films, amount));
-  }, [films]);
+  }, [films, amount]);
 
-  useEffect(() => {
-    setSlicedFilms(sliceFilms(films, amount));
-  }, [amount]);
-
-  useEffect(() => {
+  useMemo(() => {
     setSelectedFilms(slicedFilms[0]);
   }, [slicedFilms]);
 

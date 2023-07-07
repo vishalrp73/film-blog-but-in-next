@@ -1,9 +1,9 @@
 import { getFilms, getTopFive } from '@/lib/fetch';
 import { Film } from '@/lib/types';
 import { randomiseFilms } from '@/lib/functions';
-import { getHeaderContent } from '@/components/Header/getHeaderContent';
-import HomeComponent from '@/components/Home/Home';
+import { getHeaderContent } from '@/components/Header';
 import * as styles from './page.css';
+import { HomePage } from '@/screens';
 
 export default async function Home() {
   const data: Promise<Film[]> = getFilms();
@@ -17,7 +17,7 @@ export default async function Home() {
 
   return (
     <main className={styles.main}>
-      <HomeComponent
+      <HomePage
         bannerText={bannerText}
         selectedBannerImage={selectedBannerImage}
         placeholderTitle={placeholderTitle}

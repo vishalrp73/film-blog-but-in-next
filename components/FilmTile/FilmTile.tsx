@@ -1,21 +1,18 @@
-import type { FC } from 'react';
-import { useState } from 'react';
-import Link from 'next/link';
+import { type FC } from 'react';
+import { useToggle } from '@/lib/hooks';
 import clsx from 'clsx';
 import { Film } from '@/lib/types';
 import { getRandomNumber } from '@/lib/functions';
-import * as styles from './FilmTile.css';
+import Link from 'next/link';
 import { translucent } from '@/styles/translucent.css';
+import * as styles from './FilmTile.css';
 
-interface PopupProps {
-  title: string;
-  year: number;
-  director: string;
-  blurb: string;
-  img_bank: string[];
-}
+type PopupProps = Pick<
+  Film,
+  'title' | 'year' | 'director' | 'blurb' | 'img_bank'
+>;
 
-const Popup: FC<PopupProps> = ({ title, year, director, blurb, img_bank }) => {
+const Popup = ({ title, year, director, blurb, img_bank }: PopupProps) => {
   const randomNumber = getRandomNumber(img_bank.length);
   return (
     <div
@@ -32,18 +29,20 @@ const Popup: FC<PopupProps> = ({ title, year, director, blurb, img_bank }) => {
   );
 };
 
-const FilmTile: FC<{ film: Film; noAnimations?: boolean }> = ({
-  film,
-  noAnimations,
-}) => {
-  const [showPopup, setShowPopup] = useState<boolean>(false);
+interface Props {
+  film: Film;
+  noAnimations?: boolean;
+}
+
+const FilmTile: FC<Props> = ({ film, noAnimations }) => {
+  const [showPopup, togglePopup] = useToggle(false);
   const { film_id, thumbnail, title, year, director, blurb, img_bank } = film;
 
   return (
     <Link
       href={`/films/${film_id}`}
-      onMouseEnter={() => setShowPopup(true)}
-      onMouseLeave={() => setShowPopup(false)}
+      onMouseEnter={togglePopup}
+      onMouseLeave={togglePopup}
     >
       <div
         style={{ backgroundImage: `url(${thumbnail})` }}

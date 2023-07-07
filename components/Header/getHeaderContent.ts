@@ -1,9 +1,9 @@
-import { getRandomFilm, getRandomNumber } from '@/lib/functions';
-import { Film } from '@/lib/types';
 import { StaticImageData } from 'next/image';
-import julia from '../../lib/img/julia-fox.jpg';
+import { Film } from '@/lib/types';
+import Julia from '@/lib/img/julia-fox.jpg';
+import { getRandomFilm, getRandomNumber } from '@/lib/functions';
 
-const backgroundImages: StaticImageData[] = [julia];
+const backgroundImages: StaticImageData[] = [Julia];
 const bannerTextOptions: string[] = [
   'Now in Smell-O-Vision!',
   'JOE MAMA',
@@ -11,22 +11,21 @@ const bannerTextOptions: string[] = [
   'This is peak film-bro (circa 2021)',
   'Powered by hater-ade',
 ];
-const randomBackroundImageNumber = getRandomNumber(backgroundImages.length);
-const bannerTextRandomNumber: number = getRandomNumber(
-  bannerTextOptions.length,
-);
+const randomBackgroundImageNumber = getRandomNumber(backgroundImages.length);
+const bannerTextRandomNumber = getRandomNumber(bannerTextOptions.length);
 
-type HeaderExports = {
+type HeaderContent = {
   selectedBannerImage: StaticImageData;
   bannerText: string;
   placeholderTitle: string;
 };
 
-export const getHeaderContent = (films: Film[]): HeaderExports => {
-  const selectedBannerImage = backgroundImages[randomBackroundImageNumber];
+export const getHeaderContent = (films: Film[]): HeaderContent => {
+  const selectedBannerImage = backgroundImages[randomBackgroundImageNumber];
   const bannerText: string = bannerTextOptions[bannerTextRandomNumber];
   const randomFilm = getRandomFilm(films);
   const { title } = randomFilm;
+
   return {
     selectedBannerImage,
     bannerText,

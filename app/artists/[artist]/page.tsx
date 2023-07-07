@@ -1,6 +1,6 @@
 import { Film } from '@/lib/types';
 import { getArtist, getFilms } from '@/lib/fetch';
-import FilmsCategory from '@/components/CategoryPage/FilmsCategory';
+import { FilmsCategory } from '@/screens';
 
 type Params = {
   params: {

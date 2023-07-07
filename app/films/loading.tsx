@@ -1,4 +1,4 @@
-import LoadingPage from '@/components/Loading/LoadingPage';
+import { LoadingPage } from '@/screens';
 
 export default function Loading() {
   return <LoadingPage />;

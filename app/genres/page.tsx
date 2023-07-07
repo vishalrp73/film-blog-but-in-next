@@ -1,8 +1,8 @@
-import CategoryPage from '@/components/CategoryPage/CategoryPage';
+import type { Metadata } from 'next';
+import { Film } from '@/lib/types';
 import { getFilms, getGenres } from '@/lib/fetch';
 import { randomiseStrings } from '@/lib/functions';
-import { Film } from '@/lib/types';
-import type { Metadata } from 'next';
+import { CategoryPage } from '@/screens';
 
 export const metadata: Metadata = {
   title: 'Genres',

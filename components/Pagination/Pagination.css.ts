@@ -16,11 +16,6 @@ export const menuContainer = style({
   paddingBottom: 16,
 });
 
-export const filterButtons = style({
-  display: 'flex',
-  gap: 12,
-});
-
 export const gridContainer = style({
   width: '100%',
   paddingTop: 24,
@@ -30,27 +25,12 @@ export const gridContainer = style({
   gap: 16,
 });
 
-export const filterBtn = style({
-  width: 45,
-  height: 35,
-  cursor: 'pointer',
-  backgroundColor: 'crimson',
-  borderRadius: 4,
-  border: 'white',
-  color: 'white',
-  ':hover': {
-    border: '2px double white',
-  },
-  ':active': {
-    filter: 'brightness(2)',
-  },
+export const filterButtons = style({
+  display: 'flex',
+  gap: 12,
 });
 
 export const centredButtons = style({
   justifyContent: 'center',
   paddingTop: 40,
-});
-
-export const activeBtn = style({
-  backgroundColor: '#500080',
 });

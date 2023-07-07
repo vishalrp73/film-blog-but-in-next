@@ -1,9 +1,8 @@
-import MainContent from '@/components/FilmDetails/MainContent';
-import FixedHeader from '@/components/FixedHeader/FixedHeader';
-import SidebarPanel from '@/components/SidebarPanel/SidebarPanel';
+import { Film } from '@/lib/types';
 import { getFilm, getFilms } from '@/lib/fetch';
 import { getRandomNumber, randomiseFilms } from '@/lib/functions';
-import { Film } from '@/lib/types';
+import { FixedHeader } from '@/components/Header';
+import { MainContent, Sidebar } from '@/components/FilmDetails';
 import * as styles from './page.css';
 
 type Params = {
@@ -32,7 +31,7 @@ export default async function Film({ params: { filmId } }: Params) {
     >
       <FixedHeader films={randomisedFilms} title={film.title} />
       <div className={styles.container}>
-        <SidebarPanel film={film} randomTrivia={randomTrivia} />
+        <Sidebar film={film} randomTrivia={randomTrivia} />
         <MainContent film={film} />
       </div>
     </div>
