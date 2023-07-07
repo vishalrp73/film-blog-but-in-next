@@ -1,6 +1,5 @@
 import type { Dispatch, FC, SetStateAction } from 'react';
 import { Film } from '@/lib/types';
-import { getRandomFilm } from '@/lib/functions';
 import { useSort } from '@/lib/hooks/useSort';
 import Reset from '../Buttons/Reset/Reset';
 import Search from '../Search/Search';
