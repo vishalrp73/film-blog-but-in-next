@@ -1,6 +1,7 @@
 export {
   randomiseFilms,
   randomiseStrings,
+  jumbleArtistStrings,
   getRandomNumber,
   getRandomFilm,
 } from './randomise';
